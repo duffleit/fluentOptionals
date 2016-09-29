@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="FluentAssertionExtensions.cs" />
     <Compile Include="OptionalCreationExtensionsTests.cs" />
+    <Compile Include="OptionalEnumerableExtensionsTests.cs" />
     <Compile Include="OptionalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

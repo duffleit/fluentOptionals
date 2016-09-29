@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Optional.cs" />
     <Compile Include="OptionalCreationExtensions.cs" />
+    <Compile Include="OptionalEnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
