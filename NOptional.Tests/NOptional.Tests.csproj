@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Optional2Tests.cs" />
     <Compile Include="FluentAssertionExtensions.cs" />
     <Compile Include="OptionalCreationExtensionsTests.cs" />
     <Compile Include="OptionalEnumerableExtensionsTests.cs" />

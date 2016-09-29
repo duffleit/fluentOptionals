@@ -62,5 +62,19 @@ namespace NOptional
         public T1 ValueOr(T1 value) => Match(_ => _, () => value);
 
         #endregion
+
+        #region Join
+
+        public Optional<T1, T2> Join<T2>(T2 valueToJoin)
+        {
+            return new Optional<T1, T2>(this, new Optional<T2>(valueToJoin));
+        }
+
+        public Optional<T1, T2> Join<T2>(Optional<T2> optionalToJoin)
+        {
+            return new Optional<T1, T2>(this, optionalToJoin);
+        }
+
+        #endregion 
     }
 }
