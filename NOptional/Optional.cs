@@ -2,7 +2,7 @@
 
 namespace NOptional
 {
-    public class Optional
+    public static class Optional
     {
         public static Optional<T> None<T>()
         {

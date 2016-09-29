@@ -6,45 +6,40 @@ namespace NOptional.Tests
     [TestClass]
     public class OptionalCreationExtensionsTests
     {
-        #region SomeIfNotNull
+        #region ToSomeWhenNotNull
 
         [TestMethod]
-        public void SomeIfNotNull_WhenNullIsGiven_ThenNoneGetsReturned()
+        public void ToSomeWhenNotNull_WhenNullIsGiven_ThenNoneGetsReturned()
         {
-            object x = null;
-            x.SomeIfNotNull().ShouldBeNone();
+            ((object) null).ToSomeWhenNotNull().ShouldBeNone();
         }
 
         [TestMethod]
-        public void SomeIfNotNull_WhenNotNullIsGiven_ThenSomeGetsReturned()
+        public void ToSomeIfNotNull_WhenNotNullIsGiven_ThenSomeGetsReturned()
         {
-            var x = "test";
-            x.SomeIfNotNull().ShouldBeSome();
+            "test".ToSomeWhenNotNull().ShouldBeSome();
         }
 
         [TestMethod]
-        public void SomeIfNotNull_WhenEmptyStringIsGiven_ThenSomeGetsReturned()
+        public void ToSomeIfNotNull_WhenEmptyStringIsGiven_ThenSomeGetsReturned()
         {
-            var x = String.Empty;
-            x.SomeIfNotNull().ShouldBeSome();
+            string.Empty.ToSomeWhenNotNull().ShouldBeSome();
         }
 
         #endregion
 
-        #region SomeIf
+        #region ToSomeWhen
 
         [TestMethod]
-        public void SomeIf_WhenPredicateIsTrue_ThenSomeGetsReturned()
+        public void ToSomeWhen_WhenPredicateIsTrue_ThenSomeGetsReturned()
         {
-            var value = 10;
-            value.SomeIf(x => x == 10).ShouldBeSome();
+            10.ToSomeWhen(x => x == 10).ShouldBeSome();
         }
 
         [TestMethod]
-        public void SomeIf_WhenPredicateIsFalse_ThenNoneGetsReturned()
+        public void ToSomeWhen_WhenPredicateIsFalse_ThenNoneGetsReturned()
         {
-            var value = 20;
-            value.SomeIf(x => x == 10).ShouldBeNone();
+            20.ToSomeWhen(x => x == 10).ShouldBeNone();
         }
 
         #endregion
