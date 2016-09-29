@@ -158,7 +158,7 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map(_ => "test");
 
-            Assert.IsTrue(resultOptional.IsNone());
+            Assert.IsTrue(resultOptional.IsNone);
             Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
         }
 
@@ -169,7 +169,7 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map(_ => "test");
 
-            Assert.IsTrue(resultOptional.IsSome());
+            Assert.IsTrue(resultOptional.IsSome);
             Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
         }
 
@@ -180,7 +180,7 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map<string>(_ => null);
 
-            Assert.IsTrue(resultOptional.IsNone());
+            Assert.IsTrue(resultOptional.IsNone);
             Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
         }
 
@@ -216,14 +216,14 @@ namespace NOptional.Tests
         [TestMethod]
         public void None_ReturnsNoneOptional()
         {
-            var isNone = Optional.None<int>().IsNone();
+            var isNone = Optional.None<int>().IsNone;
             Assert.IsTrue(isNone);
         }
 
         [TestMethod]
         public void Some_ReturnsSomeOptional()
         {
-            var isSome = Optional.Some(1).IsSome();
+            var isSome = Optional.Some(1).IsSome;
             Assert.IsTrue(isSome);
         }
 

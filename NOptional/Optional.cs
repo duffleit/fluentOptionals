@@ -19,36 +19,38 @@ namespace NOptional
     public class Optional<T>
     {
         private readonly T _value;
-        private readonly bool _filled;
 
         #region Constructor
 
         public Optional()
         {
-            _filled = false;
+            IsSome = false;
         }
 
         public Optional(T value)
         {
-            _filled = (value != null);
+            IsSome = (value != null);
             _value = value;
         }
 
         #endregion
 
+        public bool IsSome { get; }
+        public bool IsNone => !IsSome;
+
         public void Match(Action<T> some, Action none)
         {
-            if (_filled)
+            if (IsSome)
                 some(_value);
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T, TReturn> some, Func<TReturn> none) 
-            => _filled ? some(_value) : none();
+            => IsSome ? some(_value) : none();
 
         public Optional<TMapResult> Map<TMapResult>(Func<T, TMapResult> mapper)
-            => _filled 
+            => IsSome
                 ? new Optional<TMapResult>(mapper(_value)) 
                 : new Optional<TMapResult>();
 
