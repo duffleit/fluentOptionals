@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace NOptional.Tests
 {
     [TestClass]
-    public class OptionalTests
+    public class Optional1Tests
     {
         private Optional<int> _some;
         private Optional<int> _none;
@@ -155,7 +155,7 @@ namespace NOptional.Tests
             var resultOptional = noneOptional.Map(_ => "test");
 
             resultOptional.ShouldBeNone();
-            typeof(Optional<string>).Should().Be(resultOptional.GetType());
+            typeof (Optional<string>).Should().Be(resultOptional.GetType());
         }
 
         [TestMethod]
@@ -177,10 +177,10 @@ namespace NOptional.Tests
             var resultOptional = noneOptional.Map<string>(_ => null);
 
             resultOptional.ShouldBeNone();
-            typeof(Optional<string>).Should().Be(resultOptional.GetType());
+            typeof (Optional<string>).Should().Be(resultOptional.GetType());
         }
 
-        #endregion 
+        #endregion
 
         #region Implicit Operator
 
@@ -206,28 +206,5 @@ namespace NOptional.Tests
         }
 
         #endregion
-
-        #region None & Some
-
-        [TestMethod]
-        public void None_ReturnsNoneOptional()
-        {
-            Optional.None<int>().ShouldBeNone();
-        }
-
-        [TestMethod]
-        public void Some_ReturnsSomeOptional()
-        {
-            Optional.Some(1).ShouldBeSome();
-        }
-
-        [TestMethod]
-        public void Some_WhenSomeIsCalledWithNull_ThenArgumentNullExceptionGetsThrown()
-        {
-            Action creatingSomeWithNull = () => Optional.Some<string>(null);
-            creatingSomeWithNull.ShouldThrow<ArgumentNullException>();
-        }
-
-        #endregion 
     }
 }
