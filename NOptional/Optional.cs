@@ -47,6 +47,10 @@ namespace NOptional
         public TReturn Match<TReturn>(Func<T, TReturn> some, Func<TReturn> none) 
             => _filled ? some(_value) : none();
 
+        public Optional<TMapResult> Map<TMapResult>(Func<T, TMapResult> mapper)
+            => _filled 
+                ? new Optional<TMapResult>(mapper(_value)) 
+                : new Optional<TMapResult>();
 
         public void IfSome(Action<T> handle)
             => Match(handle, () => { });

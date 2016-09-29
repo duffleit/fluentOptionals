@@ -149,6 +149,43 @@ namespace NOptional.Tests
 
         #endregion
 
+        #region Map
+
+        [TestMethod]
+        public void Map_WhenOpationalIsNone_ThenNoneGetsReturnedAgain()
+        {
+            var noneOptional = Optional.None<int>();
+
+            var resultOptional = noneOptional.Map(_ => "test");
+
+            Assert.IsTrue(resultOptional.IsNone());
+            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+        }
+
+        [TestMethod]
+        public void Map_WhenOpationalIsSome_ThenSomeGetsReturnedAgain()
+        {
+            var noneOptional = Optional.Some(10);
+
+            var resultOptional = noneOptional.Map(_ => "test");
+
+            Assert.IsTrue(resultOptional.IsSome());
+            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+        }
+
+        [TestMethod]
+        public void Map_WhenMapOpationReturnsNull_ThenNoneGetsReturned()
+        {
+            var noneOptional = Optional.Some(10);
+
+            var resultOptional = noneOptional.Map<string>(_ => null);
+
+            Assert.IsTrue(resultOptional.IsNone());
+            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+        }
+
+        #endregion 
+
         #region Implicit Operator
 
         [TestMethod]
