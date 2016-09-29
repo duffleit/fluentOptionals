@@ -13,8 +13,8 @@ namespace NOptional.Tests
         [TestInitialize]
         public void Setup()
         {
-            _some = new Optional<int>(1);
-            _none = new Optional<int>();
+            _some = Optional.Some(1);
+            _none = Optional.None<int>();
         }
 
         #region IfSome
@@ -68,30 +68,33 @@ namespace NOptional.Tests
             handleCalled.Should().Be(true);
         }
 
+        #endregion
+
+        #region ValueOr
 
         [TestMethod]
         public void IfNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
         {
-            _none.IfNone(() => 20).Should().Be(20);
+            _none.ValueOr(() => 20).Should().Be(20);
         }
 
         [TestMethod]
         public void IfNone_WhenOptionalIsNone_ThenValueGetsReturned()
         {
-            _none.IfNone(20).Should().Be(20);
+            _none.ValueOr(20).Should().Be(20);
         }
 
 
         [TestMethod]
         public void IfNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
         {
-            _some.IfNone(() => 20).Should().NotBe(20);
+            _some.ValueOr(() => 20).Should().NotBe(20);
         }
 
         [TestMethod]
         public void IfNone_WhenOptionalIsSome_ThenValueIsIgnored()
         {
-            _some.IfNone(20).Should().NotBe(20);
+            _some.ValueOr(20).Should().NotBe(20);
         }
 
         #endregion
@@ -217,10 +220,6 @@ namespace NOptional.Tests
         {
             Optional.Some(1).ShouldBeSome();
         }
-
-        #endregion
-
-        #region Some
 
         [TestMethod]
         public void Some_WhenSomeIsCalledWithNull_ThenArgumentNullExceptionGetsThrown()

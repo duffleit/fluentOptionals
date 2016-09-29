@@ -55,17 +55,20 @@ namespace NOptional
                 ? new Optional<TMapResult>(mapper(_value)) 
                 : new Optional<TMapResult>();
 
-        public void IfSome(Action<T> handle)
-            => Match(handle, () => { });
+        #region Convenience Methods
 
-        public void IfNone(Action handle)
-            => Match(_ => { }, handle);
+        public void IfSome(Action<T1> handle) => Match(handle, () => { });
 
-        public T IfNone(Func<T> handle)
-            => Match(_ => _, handle);
+        public void IfNone(Action handle) => Match(_ => { }, handle);
 
-        public T IfNone(T value)
-            => Match(_ => _, () => value);
+        public T1 ValueOr(Func<T1> handle) => Match(_ => _, handle);
+
+        public T1 ValueOr(T1 value) => Match(_ => _, () => value);
+
+        #endregion
+
+
+
 
         public static implicit operator Optional<T>(T value) 
             => new Optional<T>(value);
