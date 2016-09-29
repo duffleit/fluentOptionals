@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NOptional.Tests
@@ -24,7 +25,7 @@ namespace NOptional.Tests
             var handleCalled = false;
             _none.IfSome(_ => handleCalled = true);
 
-            Assert.IsFalse(handleCalled);
+            handleCalled.Should().Be(false);
         }
 
         [TestMethod]
@@ -33,7 +34,7 @@ namespace NOptional.Tests
             var handleCalled = false;
             _some.IfSome(_ => handleCalled = true);
 
-            Assert.IsTrue(handleCalled);
+            handleCalled.Should().Be(true);
         }
 
         [TestMethod]
@@ -42,7 +43,7 @@ namespace NOptional.Tests
             var returnedValue = 0;
             _some.IfSome(i => returnedValue = i);
 
-            Assert.AreEqual(1, returnedValue);
+            returnedValue.Should().Be(1);
         }
 
         #endregion
@@ -55,7 +56,7 @@ namespace NOptional.Tests
             var handleCalled = false;
             _some.IfNone(() => handleCalled = true);
 
-            Assert.IsFalse(handleCalled);
+            handleCalled.Should().Be(false);
         }
 
         [TestMethod]
@@ -64,37 +65,33 @@ namespace NOptional.Tests
             var handleCalled = false;
             _none.IfNone(() => handleCalled = true);
 
-            Assert.IsTrue(handleCalled);
+            handleCalled.Should().Be(true);
         }
 
 
         [TestMethod]
         public void IfNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
         {
-            var x = _none.IfNone(() => 20);
-            Assert.AreEqual(20, x);
+            _none.IfNone(() => 20).Should().Be(20);
         }
 
         [TestMethod]
         public void IfNone_WhenOptionalIsNone_ThenValueGetsReturned()
         {
-            var x = _none.IfNone(20);
-            Assert.AreEqual(20, x);
+            _none.IfNone(20).Should().Be(20);
         }
 
 
         [TestMethod]
         public void IfNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
         {
-            var x = _some.IfNone(() => 20);
-            Assert.AreEqual(1, x);
+            _some.IfNone(() => 20).Should().NotBe(20);
         }
 
         [TestMethod]
         public void IfNone_WhenOptionalIsSome_ThenValueIsIgnored()
         {
-            var x = _some.IfNone(20);
-            Assert.AreEqual(1, x);
+            _some.IfNone(20).Should().NotBe(20);
         }
 
         #endregion
@@ -110,8 +107,8 @@ namespace NOptional.Tests
                 some: _ => someHandleCalled = true,
                 none: () => noneHandleCalled = true);
 
-            Assert.IsTrue(someHandleCalled);
-            Assert.IsFalse(noneHandleCalled);
+            someHandleCalled.Should().BeTrue();
+            noneHandleCalled.Should().BeFalse();
         }
 
         [TestMethod]
@@ -123,28 +120,24 @@ namespace NOptional.Tests
                 some: _ => someHandleCalled = true,
                 none: () => noneHandleCalled = true);
 
-            Assert.IsFalse(someHandleCalled);
-            Assert.IsTrue(noneHandleCalled);
+            noneHandleCalled.Should().BeTrue();
+            someHandleCalled.Should().BeFalse();
         }
 
         [TestMethod]
         public void Match_WhenOptionalHasValue_SomeHandleGetsReturned()
         {
-            var x = _some.Match(
+            _some.Match(
                 some: _ => 20,
-                none: () => 30);
-
-            Assert.AreEqual(20, x);
+                none: () => 30).Should().Be(20);
         }
 
         [TestMethod]
         public void Match_WhenOptionalHasNoValue_NoneHandleGetsReturned()
         {
-            var x = _none.Match(
+            _none.Match(
                 some: _ => 20,
-                none: () => 30);
-
-            Assert.AreEqual(30, x);
+                none: () => 30).Should().Be(30);
         }
 
         #endregion
@@ -158,8 +151,8 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map(_ => "test");
 
-            Assert.IsTrue(resultOptional.IsNone);
-            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+            resultOptional.ShouldBeNone();
+            typeof(Optional<string>).Should().Be(resultOptional.GetType());
         }
 
         [TestMethod]
@@ -169,8 +162,8 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map(_ => "test");
 
-            Assert.IsTrue(resultOptional.IsSome);
-            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+            resultOptional.ShouldBeSome();
+            typeof (Optional<string>).Should().Be(resultOptional.GetType());
         }
 
         [TestMethod]
@@ -180,8 +173,8 @@ namespace NOptional.Tests
 
             var resultOptional = noneOptional.Map<string>(_ => null);
 
-            Assert.IsTrue(resultOptional.IsNone);
-            Assert.AreEqual(typeof(Optional<string>), resultOptional.GetType());
+            resultOptional.ShouldBeNone();
+            typeof(Optional<string>).Should().Be(resultOptional.GetType());
         }
 
         #endregion 
@@ -216,15 +209,13 @@ namespace NOptional.Tests
         [TestMethod]
         public void None_ReturnsNoneOptional()
         {
-            var isNone = Optional.None<int>().IsNone;
-            Assert.IsTrue(isNone);
+            Optional.None<int>().ShouldBeNone();
         }
 
         [TestMethod]
         public void Some_ReturnsSomeOptional()
         {
-            var isSome = Optional.Some(1).IsSome;
-            Assert.IsTrue(isSome);
+            Optional.Some(1).ShouldBeSome();
         }
 
         #endregion

@@ -12,21 +12,21 @@ namespace NOptional.Tests
         public void SomeIfNotNull_WhenNullIsGiven_ThenNoneGetsReturned()
         {
             object x = null;
-            Assert.IsTrue(x.SomeIfNotNull().IsNone);
+            x.SomeIfNotNull().ShouldBeNone();
         }
 
         [TestMethod]
         public void SomeIfNotNull_WhenNotNullIsGiven_ThenSomeGetsReturned()
         {
             var x = "test";
-            Assert.IsTrue(x.SomeIfNotNull().IsSome);
+            x.SomeIfNotNull().ShouldBeSome();
         }
 
         [TestMethod]
         public void SomeIfNotNull_WhenEmptyStringIsGiven_ThenSomeGetsReturned()
         {
             var x = String.Empty;
-            Assert.IsTrue(x.SomeIfNotNull().IsSome);
+            x.SomeIfNotNull().ShouldBeSome();
         }
 
         #endregion
@@ -37,14 +37,14 @@ namespace NOptional.Tests
         public void SomeIf_WhenPredicateIsTrue_ThenSomeGetsReturned()
         {
             var value = 10;
-            Assert.IsTrue(value.SomeIf(x => x == 10).IsSome);
+            value.SomeIf(x => x == 10).ShouldBeSome();
         }
 
         [TestMethod]
         public void SomeIf_WhenPredicateIsFalse_ThenNoneGetsReturned()
         {
             var value = 20;
-            Assert.IsTrue(value.SomeIf(x => x == 10).IsNone);
+            value.SomeIf(x => x == 10).ShouldBeNone();
         }
 
         #endregion
