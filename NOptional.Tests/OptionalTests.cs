@@ -219,5 +219,16 @@ namespace NOptional.Tests
         }
 
         #endregion
+
+        #region Some
+
+        [TestMethod]
+        public void Some_WhenSomeIsCalledWithNull_ThenArgumentNullExceptionGetsThrown()
+        {
+            Action creatingSomeWithNull = () => Optional.Some<string>(null);
+            creatingSomeWithNull.ShouldThrow<ArgumentNullException>();
+        }
+
+        #endregion 
     }
 }

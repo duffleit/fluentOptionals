@@ -12,6 +12,8 @@ namespace NOptional
 
         public static Optional<T> Some<T>(T value)
         {
+            if(value == null)
+                throw new ArgumentNullException(nameof(value));
             return new Optional<T>(value);
         }
     }
