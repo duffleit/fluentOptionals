@@ -39,8 +39,13 @@ namespace NOptional
         public void IfNone(Action handle)
             => Match((o1, o2, o3) => { }, handle);
 
+        public Optional<T1, T2, T3, T4> Join<T4>(T4 valueToJoin)
+            => new Optional<T1, T2, T3, T4>(_o1, _o2, _o3, Optional.From<T4>(valueToJoin));
+
+        public Optional<T1, T2, T3, T4> Join<T4>(Optional<T4> optionalToJoin)
+            => new Optional<T1, T2, T3, T4>(_o1, _o2, _o3, optionalToJoin);
         #region Equals
-        
+
         public bool Equals(Optional<T1, T2, T3> other) 
             => _o1.Equals(other._o1) && _o2.Equals(other._o2) && _o2.Equals(other._o3);
 
