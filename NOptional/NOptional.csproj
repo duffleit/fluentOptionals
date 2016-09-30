@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IOptional.cs" />
     <Compile Include="Optional.cs" />
+    <Compile Include="Optional3.cs" />
     <Compile Include="Optional2.cs" />
     <Compile Include="Extensions\OptionalCreationExtensions.cs" />
     <Compile Include="Extensions\OptionalEnumerableExtensions.cs" />
