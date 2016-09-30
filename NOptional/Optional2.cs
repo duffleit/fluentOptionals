@@ -2,7 +2,9 @@
 
 namespace NOptional
 {
-    public class Optional<T1, T2>
+    public class Optional<T1, T2> : 
+        IOptional,
+        IEquatable<Optional<T1, T2>>
     {
         private readonly Optional<T1> _o1;
         private readonly Optional<T2> _o2;
@@ -35,18 +37,11 @@ namespace NOptional
         public void IfNone(Action handle)
             => Match((o1, o2) => { }, handle);
 
-        //#region Join
+        #region Equals
+        
+        public bool Equals(Optional<T1, T2> other) 
+            => _o1.Equals(other._o1) && _o2.Equals(other._o2);
 
-        ////public Optional<T1, T2, T3> Join<T3>(T3 valueToJoin)
-        ////{
-        ////    return new Optional<T1, T2, T3>(_o1, _o2, new Optional<T3>(valueToJoin));
-        ////}
-
-        ////public Optional<T1, T2, T3> Join<T3>(Optional<T3> optionalToJoin)
-        ////{
-        ////    return new Optional<T1, T2, T3>(_o1, _o2, optionalToJoin);
-        ////}
-
-        //#endregion 
+        #endregion
     }
 }

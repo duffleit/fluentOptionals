@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NOptional
 {
-    public class Optional<T1> : IOptional
+    public class Optional<T1> :
+        IOptional,
+        IComparable<Optional<T1>>,
+        IComparable<T1>,
+        IEquatable<Optional<T1>>,
+        IEquatable<T1>
     {
         private readonly T1 _value;
 
@@ -56,5 +62,27 @@ namespace NOptional
         {
             return new Optional<T1, T2>(this, optionalToJoin);
         }
+
+        #region Compare/Equals
+
+        public int CompareTo(Optional<T1> other) 
+            => IsNone && other.IsNone
+                ? 0 : IsSome && other.IsSome
+                    ? Comparer<T1>.Default.Compare(_value, other._value)
+                    : IsSome ? -1 : 1;
+
+
+        public int CompareTo(T1 other)
+            => IsNone
+                ? -1 : Comparer<T1>.Default.Compare(_value, other);
+
+
+        public bool Equals(Optional<T1> other) 
+            => IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(_value, other._value);
+
+        public bool Equals(T1 other) 
+            => !IsNone && EqualityComparer<T1>.Default.Equals(_value, other);
+
+        #endregion
     }
 }
