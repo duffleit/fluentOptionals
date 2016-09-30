@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Optional5Tests.cs" />
     <Compile Include="Optional4Tests.cs" />
     <Compile Include="Optional3Tests.cs" />
     <Compile Include="Optional2Tests.cs" />
