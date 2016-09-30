@@ -10,8 +10,6 @@ namespace NOptional
         IEquatable<Optional<T1>>,
         IEquatable<T1>
     {
-        private readonly T1 _value;
-
         internal Optional()
         {
             IsSome = false;
@@ -20,11 +18,13 @@ namespace NOptional
         internal Optional(T1 value)
         {
             IsSome = (value != null);
-            _value = value;
+            Value = value;
         }
 
         public static implicit operator Optional<T1>(T1 value) => Optional.From(value);
 
+        internal T1 Value { get; }
+        
         public bool IsSome { get; }
 
         public bool IsNone => !IsSome;
@@ -32,17 +32,17 @@ namespace NOptional
         public void Match(Action<T1> some, Action none)
         {
             if (IsSome)
-                some(_value);
+                some(Value);
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T1, TReturn> some, Func<TReturn> none)
-            => IsSome ? some(_value) : none();
+            => IsSome ? some(Value) : none();
 
         public Optional<TMapResult> Map<TMapResult>(Func<T1, TMapResult> mapper)
             => IsSome
-                ? Optional.From(mapper(_value))
+                ? Optional.From(mapper(Value))
                 : Optional.None<TMapResult>();
 
         public void IfSome(Action<T1> handle) => Match(handle, () => { });
@@ -68,20 +68,20 @@ namespace NOptional
         public int CompareTo(Optional<T1> other) 
             => IsNone && other.IsNone
                 ? 0 : IsSome && other.IsSome
-                    ? Comparer<T1>.Default.Compare(_value, other._value)
+                    ? Comparer<T1>.Default.Compare(Value, other.Value)
                     : IsSome ? -1 : 1;
 
 
         public int CompareTo(T1 other)
             => IsNone
-                ? -1 : Comparer<T1>.Default.Compare(_value, other);
+                ? -1 : Comparer<T1>.Default.Compare(Value, other);
 
 
         public bool Equals(Optional<T1> other) 
-            => IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(_value, other._value);
+            => IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(Value, other.Value);
 
         public bool Equals(T1 other) 
-            => !IsNone && EqualityComparer<T1>.Default.Equals(_value, other);
+            => !IsNone && EqualityComparer<T1>.Default.Equals(Value, other);
 
         #endregion
     }

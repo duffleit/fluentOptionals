@@ -21,14 +21,14 @@ namespace NOptional
         public void Match(Action<T1, T2> some, Action none)
         {
             if (IsSome)
-                some(_o1.ValueOr(default(T1)), _o2.ValueOr(default(T2)));
+                some(_o1.Value, _o2.Value);
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T1, T2, TReturn> some, Func<TReturn> none)
             => IsSome 
-                ? some(_o1.ValueOr(default(T1)), _o2.ValueOr(default(T2)))
+                ? some(_o1.Value, _o2.Value)
                 : none();
 
         public void IfSome(Action<T1, T2> handle)
