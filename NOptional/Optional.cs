@@ -14,7 +14,7 @@ namespace NOptional
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            return new Optional<T>(value);
+            return From(value);
         }
 
         public static Optional<T> From<T>(T value)

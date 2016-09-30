@@ -29,7 +29,7 @@ namespace NOptional
         }
 
         public static IEnumerable<Optional<T>> ToOptionalList<T>(this IEnumerable<T> source)
-            => source.Select(item => new Optional<T>(item));
+            => source.Select(Optional.From);
         
         public static IEnumerable<Optional<T>> AreSome<T>(this IEnumerable<Optional<T>> source) 
             => source.Where(item => item.IsSome);
