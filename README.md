@@ -1,3 +1,5 @@
+![fluentOptionals](https://raw.githubusercontent.com/duffleit/fluentOptionals/master/fluentOptionals.png)
+
 # fluentOptionals
 F# Optionals for C#
 
