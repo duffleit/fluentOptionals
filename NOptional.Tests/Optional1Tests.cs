@@ -143,6 +143,15 @@ namespace NOptional.Tests
                 none: () => 30).Should().Be(30);
         }
 
+
+        [TestMethod]
+        public void Match_CanReturNull()
+        {
+            _none.Match(
+                some: _ => null as string,
+                none: () => null as string).Should().Be(null);
+        }
+
         #endregion
 
         #region Map
