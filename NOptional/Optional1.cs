@@ -53,15 +53,11 @@ namespace NOptional
 
         public T1 ValueOr(T1 value) => Match(_ => _, () => value);
 
-        public Optional<T1, T2> Join<T2>(T2 valueToJoin)
-        {
-            return new Optional<T1, T2>(this, Optional.From<T2>(valueToJoin));
-        }
+        public Optional<T1, T2> Join<T2>(T2 valueToJoin) 
+            => new Optional<T1, T2>(this, Optional.From<T2>(valueToJoin));
 
-        public Optional<T1, T2> Join<T2>(Optional<T2> optionalToJoin)
-        {
-            return new Optional<T1, T2>(this, optionalToJoin);
-        }
+        public Optional<T1, T2> Join<T2>(Optional<T2> optionalToJoin) 
+            => new Optional<T1, T2>(this, optionalToJoin);
 
         #region Compare/Equals
 

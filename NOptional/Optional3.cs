@@ -44,6 +44,7 @@ namespace NOptional
 
         public Optional<T1, T2, T3, T4> Join<T4>(Optional<T4> optionalToJoin)
             => new Optional<T1, T2, T3, T4>(_o1, _o2, _o3, optionalToJoin);
+
         #region Equals
 
         public bool Equals(Optional<T1, T2, T3> other) 
