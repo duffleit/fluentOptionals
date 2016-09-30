@@ -1,7 +1,7 @@
-using System;
+using fluentOptionals.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace NOptional.Tests
+namespace fluentOptionals.Tests
 {
     [TestClass]
     public class OptionalCreationExtensionsTests

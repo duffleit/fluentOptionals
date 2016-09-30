@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NOptional
+namespace fluentOptionals.Extensions
 {
     public static class OptionalCreationExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NOptional
+namespace fluentOptionals
 {
     public class Optional<T1, T2, T3, T4, T5> : 
         IOptional,

@@ -1,4 +1,4 @@
-﻿namespace NOptional
+﻿namespace fluentOptionals
 {
     public interface IOptional
     {

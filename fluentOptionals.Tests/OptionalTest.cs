@@ -2,7 +2,7 @@ using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace NOptional.Tests
+namespace fluentOptionals.Tests
 {
     [TestClass]
     public class OptionalTest

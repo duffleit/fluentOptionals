@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NOptional
+namespace fluentOptionals
 {
     public class Optional<T1> :
         IOptional,

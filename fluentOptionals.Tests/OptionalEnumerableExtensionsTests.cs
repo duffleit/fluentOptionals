@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using fluentOptionals.Extensions;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace NOptional.Tests
+namespace fluentOptionals.Tests
 {
     [TestClass]
     public class OptionalEnumerableExtensionsTests
