@@ -6,12 +6,12 @@ namespace NOptional
     {
         private readonly T1 _value;
 
-        public Optional()
+        internal Optional()
         {
             IsSome = false;
         }
 
-        public Optional(T1 value)
+        internal Optional(T1 value)
         {
             IsSome = (value != null);
             _value = value;

@@ -7,7 +7,7 @@ namespace NOptional
         private readonly Optional<T1> _o1;
         private readonly Optional<T2> _o2;
 
-        public Optional(Optional<T1> o1, Optional<T2> o2)
+        internal Optional(Optional<T1> o1, Optional<T2> o2)
         {
             _o1 = o1;
             _o2 = o2;
