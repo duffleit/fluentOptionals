@@ -6,8 +6,8 @@
     <ProjectGuid>{95A08A3F-C304-4459-A9EF-C62F16A348F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NOptional.Tests</RootNamespace>
-    <AssemblyName>NOptional.Tests</AssemblyName>
+    <RootNamespace>fluentOptionals.Tests</RootNamespace>
+    <AssemblyName>fluentOptionals.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,7 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NOptional\NOptional.csproj">
+    <ProjectReference Include="..\fluentOptionals\fluentOptionals.csproj">
       <Project>{A1DBD4A0-0B9B-48D8-9C95-4D291AFAF391}</Project>
       <Name>NOptional</Name>
     </ProjectReference>
