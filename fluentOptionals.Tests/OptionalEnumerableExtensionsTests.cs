@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using fluentOptionals.Extensions;
 using FluentAssertions;
+using FluentOptionals.Linq;
 using NUnit.Framework;
 
 namespace fluentOptionals.Tests

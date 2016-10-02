@@ -97,6 +97,20 @@ namespace fluentOptionals.Tests
             _some.ValueOr(20).Should().NotBe(20);
         }
 
+        [Test]
+        public void ValueOrThrow_WhenOptionalIsSome_ThenValueGetsReturned()
+        {
+            _some.ValueOrThrow(new TestException()).Should().NotBe(20);
+        }
+
+        [Test]
+        public void ValueOrThrow_WhenOptionalIsValue_ThenValueGetsThrown()
+        {
+            Action noneThrowsException = () => _none.ValueOrThrow(new TestException());
+
+            noneThrowsException.ShouldThrow<Exception>();
+        }
+
         #endregion
 
         #region Match
@@ -216,4 +230,7 @@ namespace fluentOptionals.Tests
 
         #endregion
     }
+
+    public class TestException : Exception { }
 }
+    

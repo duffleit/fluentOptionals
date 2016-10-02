@@ -47,7 +47,7 @@
     <Compile Include="Optional4.cs" />
     <Compile Include="Optional3.cs" />
     <Compile Include="Optional2.cs" />
-    <Compile Include="Extensions\OptionalEnumerableExtensions.cs" />
+    <Compile Include="Linq\OptionalEnumerableExtensions.cs" />
     <Compile Include="Optional1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

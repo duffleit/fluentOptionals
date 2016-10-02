@@ -56,6 +56,12 @@ namespace fluentOptionals
 
         public T1 ValueOr(T1 value) => Match(_ => _, () => value);
 
+        public T1 ValueOrThrow(Exception exception)
+        {
+            if (!IsSome) throw exception;
+            return Value;
+        }
+
         public Optional<T1, T2> Join<T2>(T2 valueToJoin) 
             => new Optional<T1, T2>(this, Optional.From<T2>(valueToJoin));
 
