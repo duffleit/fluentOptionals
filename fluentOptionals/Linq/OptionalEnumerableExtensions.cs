@@ -31,14 +31,9 @@ namespace FluentOptionals.Linq
 
         public static IEnumerable<Optional<T>> ToOptionalList<T>(this IEnumerable<T> source)
             => source.Select(Optional.From);
-        
-        public static IEnumerable<Optional<T>> AreSome<T>(this IEnumerable<Optional<T>> source) 
-            => source.Where(item => item.IsSome);
 
-        public static IEnumerable<Optional<T>> AreNone<T>(this IEnumerable<Optional<T>> source) 
-            => source.Where(item => item.IsNone);
 
-        public static IEnumerable<Optional<TMapResult>> Map<TMapResult, T>(this IEnumerable<Optional<T>> source, Func<T, TMapResult> mapper) 
-            => source.Select(item => item.Map(mapper));
+        public static IEnumerable<Optional<T>> ToOptionalList<T>(this IEnumerable<T> source, Func<T, bool> condition)
+            => source.Select(s => Optional.From(s, condition));
     }
 }
