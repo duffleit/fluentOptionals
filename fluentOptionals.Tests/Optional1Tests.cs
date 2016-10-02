@@ -1,16 +1,16 @@
 ﻿using System;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace fluentOptionals.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class Optional1Tests
     {
         private Optional<int> _some;
         private Optional<int> _none;
 
-        [TestInitialize]
+        [SetUp]
         public void Setup()
         {
             _some = Optional.Some(1);
@@ -19,7 +19,7 @@ namespace fluentOptionals.Tests
 
         #region IfSome
 
-        [TestMethod]
+        [Test]
         public void IfSome_HandleIsNotCalledOnNone()
         {
             var handleCalled = false;
@@ -28,7 +28,7 @@ namespace fluentOptionals.Tests
             handleCalled.Should().Be(false);
         }
 
-        [TestMethod]
+        [Test]
         public void IfSome_HandleIsCalledOnSome()
         {
             var handleCalled = false;
@@ -37,7 +37,7 @@ namespace fluentOptionals.Tests
             handleCalled.Should().Be(true);
         }
 
-        [TestMethod]
+        [Test]
         public void IfSome_HandleReturnsRightValue()
         {
             var returnedValue = 0;
@@ -50,7 +50,7 @@ namespace fluentOptionals.Tests
 
         #region IfNone
 
-        [TestMethod]
+        [Test]
         public void IfNone_HandleIsNotCalledOnSome()
         {
             var handleCalled = false;
@@ -59,7 +59,7 @@ namespace fluentOptionals.Tests
             handleCalled.Should().Be(false);
         }
 
-        [TestMethod]
+        [Test]
         public void IfNone_HandleIsCalledOnNone()
         {
             var handleCalled = false;
@@ -72,26 +72,26 @@ namespace fluentOptionals.Tests
 
         #region ValueOr
 
-        [TestMethod]
+        [Test]
         public void IfNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
         {
             _none.ValueOr(() => 20).Should().Be(20);
         }
 
-        [TestMethod]
+        [Test]
         public void IfNone_WhenOptionalIsNone_ThenValueGetsReturned()
         {
             _none.ValueOr(20).Should().Be(20);
         }
 
 
-        [TestMethod]
+        [Test]
         public void IfNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
         {
             _some.ValueOr(() => 20).Should().NotBe(20);
         }
 
-        [TestMethod]
+        [Test]
         public void IfNone_WhenOptionalIsSome_ThenValueIsIgnored()
         {
             _some.ValueOr(20).Should().NotBe(20);
@@ -101,7 +101,7 @@ namespace fluentOptionals.Tests
 
         #region Match
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOptionalHasValue_SomeHandleGetsCalled()
         {
             bool someHandleCalled = false, noneHandleCalled = false;
@@ -114,7 +114,7 @@ namespace fluentOptionals.Tests
             noneHandleCalled.Should().BeFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOptionalHasNoValue_NoneHandleGetsCalled()
         {
             bool someHandleCalled = false, noneHandleCalled = false;
@@ -127,7 +127,7 @@ namespace fluentOptionals.Tests
             someHandleCalled.Should().BeFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOptionalHasValue_SomeHandleGetsReturned()
         {
             _some.Match(
@@ -135,7 +135,7 @@ namespace fluentOptionals.Tests
                 none: () => 30).Should().Be(20);
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOptionalHasNoValue_NoneHandleGetsReturned()
         {
             _none.Match(
@@ -144,7 +144,7 @@ namespace fluentOptionals.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void Match_CanReturNull()
         {
             _none.Match(
@@ -156,7 +156,7 @@ namespace fluentOptionals.Tests
 
         #region Map
 
-        [TestMethod]
+        [Test]
         public void Map_WhenOpationalIsNone_ThenNoneGetsReturnedAgain()
         {
             var noneOptional = Optional.None<int>();
@@ -167,7 +167,7 @@ namespace fluentOptionals.Tests
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
         }
 
-        [TestMethod]
+        [Test]
         public void Map_WhenOpationalIsSome_ThenSomeGetsReturnedAgain()
         {
             var noneOptional = Optional.Some(10);
@@ -178,7 +178,7 @@ namespace fluentOptionals.Tests
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
         }
 
-        [TestMethod]
+        [Test]
         public void Map_WhenMapOpationReturnsNull_ThenNoneGetsReturned()
         {
             var noneOptional = Optional.Some(10);
@@ -193,21 +193,21 @@ namespace fluentOptionals.Tests
 
         #region Implicit Operator
 
-        [TestMethod]
+        [Test]
         public void ImplicitOperator_NullGetsNone()
         {
             Optional<object> optional = (object) null;
             optional.IfSome(_ => Assert.Fail());
         }
 
-        [TestMethod]
+        [Test]
         public void ImplicitOperator_ValueTypeGetsSome()
         {
             Optional<int> optional = 15;
             optional.IfNone(() => Assert.Fail());
         }
 
-        [TestMethod]
+        [Test]
         public void ImplicitOperator_ReferenceTypeGetsSome()
         {
             Optional<DateTime> optional = DateTime.Now;

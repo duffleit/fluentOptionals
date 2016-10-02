@@ -1,22 +1,22 @@
 ﻿using System.Collections.Generic;
 using fluentOptionals.Extensions;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace fluentOptionals.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class OptionalEnumerableExtensionsTests
     {
         #region FirstOrNone (IEnumerable<T>)
 
-        [TestMethod]
+        [Test]
         public void FirstOrNone_WhenEmptyListIsGiven_ThenNoneGetsReturned()
         {
             new List<int>().FirstOrNone().ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void FirstOrNone_WhenListWithMultipleItemsIsGiven_ThenSomeOfFirstElementGetsReturned()
         {
             var first = new List<int> {1, 2, 3}.FirstOrNone();
@@ -26,7 +26,7 @@ namespace fluentOptionals.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void FirstOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
         {
             var first = new List<int> { 10 }.FirstOrNone();
@@ -39,13 +39,13 @@ namespace fluentOptionals.Tests
 
         #region LastOrNone (IEnumerable<T>)
 
-        [TestMethod]
+        [Test]
         public void LastOrNone_WhenEmptyListIsGiven_ThenNoneGetsReturned()
         {
             new List<int>().LastOrNone().ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void LastOrNone_WhenListWithMultipleItemsIsGiven_ThenSomeOfLastElementGetsReturned()
         {
             var last = new List<int> { 1, 2, 3 }.LastOrNone();
@@ -55,7 +55,7 @@ namespace fluentOptionals.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void LastOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
         {
             var last = new List<int> { 10 }.LastOrNone();
@@ -68,20 +68,20 @@ namespace fluentOptionals.Tests
 
         #region SingleOrNone (IEnumerable<T>)
 
-        [TestMethod]
+        [Test]
         public void SingleOrNone_WhenEmptyListIsGiven_ThenNoneGetsReturned()
         {
             new List<int>().SingleOrNone().ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void SingleOrNone_WhenListWithMultipleItemsIsGiven_ThenNoneGetsReturned()
         {
             new List<int> { 1, 2, 3 }.SingleOrNone().ShouldBeNone();
         }
 
 
-        [TestMethod]
+        [Test]
         public void SingleOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
         {
             var single = new List<int> { 10 }.SingleOrNone();
@@ -152,13 +152,13 @@ namespace fluentOptionals.Tests
 
         #region AreSome (IEnumerable<Optional<T>>)
 
-        [TestMethod]
+        [Test]
         public void AreSome_WhenEmptyListIsGiven_ThenEmptyListGetsReturned()
         {
             new List<Optional<int>>().AreSome().Should().HaveCount(0);
         }
 
-        [TestMethod]
+        [Test]
         public void AreSome_WhenListOnlyIncludeSomeItems_ThenAllElementsGetReturned()
         {
             var list = new List<Optional<int>>
@@ -170,7 +170,7 @@ namespace fluentOptionals.Tests
             list.AreSome().Should().HaveSameCount(list);
         }
 
-        [TestMethod]
+        [Test]
         public void AreSome_WhenListOnlyIncludeNoneItems_ThenEmptyListGetsReturned()
         {
             var list = new List<Optional<int>>
@@ -182,7 +182,7 @@ namespace fluentOptionals.Tests
             list.AreSome().Should().HaveCount(0);
         }
 
-        [TestMethod]
+        [Test]
         public void AreSome_WhenListIncludeNoneAndSomeItems_ThenOnlySomeItemsGetReturned()
         {
             var list = new List<Optional<int>>
@@ -202,13 +202,13 @@ namespace fluentOptionals.Tests
 
         #region AreNone (IEnumerable<Optional<T>>)
 
-        [TestMethod]
+        [Test]
         public void AreNone_WhenEmptyListIsGiven_ThenEmptyListGetsReturned()
         {
             new List<Optional<int>>().AreNone().Should().HaveCount(0);
         }
 
-        [TestMethod]
+        [Test]
         public void AreNone_WhenListOnlyIncludeSomeItems_ThenEmptyListGetsReturned()
         {
             var list = new List<Optional<int>>
@@ -220,7 +220,7 @@ namespace fluentOptionals.Tests
             list.AreNone().Should().HaveCount(0);
         }
 
-        [TestMethod]
+        [Test]
         public void AreNone_WhenListOnlyIncludeNoneItems_ThenAllElementsGetReturned()
         {
             var list = new List<Optional<int>>
@@ -232,7 +232,7 @@ namespace fluentOptionals.Tests
             list.AreNone().Should().HaveCount(2);
         }
 
-        [TestMethod]
+        [Test]
         public void AreNone_WhenListIncludeNoneAndSomeItems_ThenOnlyNoneItemsGetReturned()
         {
             var list = new List<Optional<int>>

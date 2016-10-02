@@ -1,22 +1,21 @@
 using System;
-using fluentOptionals.Extensions;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace fluentOptionals.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class OptionalTests
     {
         #region ToNone
 
-        [TestMethod]
+        [Test]
         public void None_ReturnsNoneOptional()
         {
             10.ToNone().ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void None_WhenNoneIsCreatedFromNull_ThenNoExceptionShouldBeThrown()
         {
             ((object) null).ToNone().ShouldBeNone();
@@ -26,13 +25,13 @@ namespace fluentOptionals.Tests
 
         #region ToSome
 
-        [TestMethod]
+        [Test]
         public void Some_ReturnsSomeOptional()
         {
             10.ToSome().ShouldBeSome();
         }
 
-        [TestMethod]
+        [Test]
 
         public void ToSome_WhenNullIsGiven_ThenSomeCreationFailedExceptionGetsThrown()
         {
@@ -45,37 +44,37 @@ namespace fluentOptionals.Tests
 
         #region ToOptional
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenNullIsGiven_ThenNoneGetsReturned()
         {
             ((object) null).ToOptional().ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenValuesGiven_ThenSomeGetsReturned()
         {
             "test".ToOptional().ShouldBeSome();
         }
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenEmptyStringIsGiven_ThenSomeGetsReturned()
         {
             string.Empty.ToOptional().ShouldBeSome();
         }
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenPredicateIsTrue_ThenSomeGetsReturned()
         {
             10.ToOptional(x => x == 10).ShouldBeSome();
         }
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenPredicateIsFalse_ThenNoneGetsReturned()
         {
             20.ToOptional(x => x == 10).ShouldBeNone();
         }
 
-        [TestMethod]
+        [Test]
         public void ToOptional_WhenPredicateForNullIsGiven_ThenNoneGetsReturned()
         {
             ((string) null).ToOptional(x => x.Length == 10).ShouldBeNone();

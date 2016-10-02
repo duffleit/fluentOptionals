@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace fluentOptionals.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class Optional3Tests
     {
-        [TestMethod]
+        [Test]
         public void Match_WhenAllOptionalsAreSome_ThenSomeHandleGetsCalled()
         {
             var someHandleCalled = false;
@@ -24,7 +24,7 @@ namespace fluentOptionals.Tests
             noneHandleCalled.Should().BeFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOneOptionalsNone_ThenNoneHandleGetsCalled()
         {
             var someHandleCalled = false;
@@ -42,7 +42,7 @@ namespace fluentOptionals.Tests
             someHandleCalled.Should().BeFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenAllOptionalsAreSome_ThenHandleGetsRightParamters()
         {
             var someHandleCalled = false;
@@ -66,7 +66,7 @@ namespace fluentOptionals.Tests
             noneHandleCalled.Should().BeFalse();
         }
 
-        [TestMethod]
+        [Test]
         public void Match_WhenAllOptionalsAreSome_ThenMatchReturnsSomeValue()
         {
             var x =
@@ -82,7 +82,7 @@ namespace fluentOptionals.Tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void Match_WhenOneOptionalIsNone_ThenMatchReturnsNoneValue()
         {
             var x =
@@ -97,7 +97,7 @@ namespace fluentOptionals.Tests
             x.Should().Be("none");
         }
 
-        [TestMethod]
+        [Test]
         public void IfNone_WhenOneOptionalIsNone_ThenIfSomeHandleGetsCalled()
         {
             var noneHandleCalled = false;
@@ -110,7 +110,7 @@ namespace fluentOptionals.Tests
             noneHandleCalled.Should().BeTrue();
         }
 
-        [TestMethod]
+        [Test]
         public void IfSome_WhenAllOptionalsAreSome_ThenIfSomeHandleGetsCalled()
         {
             var someHandleCalled = false;
