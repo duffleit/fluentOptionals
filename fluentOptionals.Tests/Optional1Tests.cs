@@ -173,9 +173,7 @@ namespace fluentOptionals.Tests
         [Test]
         public void Map_WhenOpationalIsNone_ThenNoneGetsReturnedAgain()
         {
-            var noneOptional = Optional.None<int>();
-
-            var resultOptional = noneOptional.Map(_ => "test");
+            var resultOptional = 10.ToNone().Map(_ => "test");
 
             resultOptional.ShouldBeNone();
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
@@ -184,9 +182,7 @@ namespace fluentOptionals.Tests
         [Test]
         public void Map_WhenOpationalIsSome_ThenSomeGetsReturnedAgain()
         {
-            var noneOptional = Optional.Some(10);
-
-            var resultOptional = noneOptional.Map(_ => "test");
+            var resultOptional = 10.ToSome().Map(_ => "test");
 
             resultOptional.ShouldBeSome();
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
@@ -195,9 +191,7 @@ namespace fluentOptionals.Tests
         [Test]
         public void Map_WhenMapOpationReturnsNull_ThenNoneGetsReturned()
         {
-            var noneOptional = Optional.Some(10);
-
-            var resultOptional = noneOptional.Map<string>(_ => null);
+            var resultOptional = 10.ToSome().Map<string>(_ => null);
 
             resultOptional.ShouldBeNone();
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
