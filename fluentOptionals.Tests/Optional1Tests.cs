@@ -17,53 +17,53 @@ namespace fluentOptionals.Tests
             _none = Optional.None<int>();
         }
 
-        #region IfSome
+        #region MatchSome
 
         [Test]
-        public void IfSome_HandleIsNotCalledOnNone()
+        public void MatchSome_HandleIsNotCalledOnNone()
         {
             var handleCalled = false;
-            _none.IfSome(_ => handleCalled = true);
+            _none.MatchSome(_ => handleCalled = true);
 
             handleCalled.Should().Be(false);
         }
 
         [Test]
-        public void IfSome_HandleIsCalledOnSome()
+        public void MatchSome_HandleIsCalledOnSome()
         {
             var handleCalled = false;
-            _some.IfSome(_ => handleCalled = true);
+            _some.MatchSome(_ => handleCalled = true);
 
             handleCalled.Should().Be(true);
         }
 
         [Test]
-        public void IfSome_HandleReturnsRightValue()
+        public void MatchSome_HandleReturnsRightValue()
         {
             var returnedValue = 0;
-            _some.IfSome(i => returnedValue = i);
+            _some.MatchSome(i => returnedValue = i);
 
             returnedValue.Should().Be(1);
         }
 
         #endregion
 
-        #region IfNone
+        #region MatchNone
 
         [Test]
-        public void IfNone_HandleIsNotCalledOnSome()
+        public void MatchNone_HandleIsNotCalledOnSome()
         {
             var handleCalled = false;
-            _some.IfNone(() => handleCalled = true);
+            _some.MatchNone(() => handleCalled = true);
 
             handleCalled.Should().Be(false);
         }
 
         [Test]
-        public void IfNone_HandleIsCalledOnNone()
+        public void MatchNone_HandleIsCalledOnNone()
         {
             var handleCalled = false;
-            _none.IfNone(() => handleCalled = true);
+            _none.MatchNone(() => handleCalled = true);
 
             handleCalled.Should().Be(true);
         }
@@ -211,21 +211,21 @@ namespace fluentOptionals.Tests
         public void ImplicitOperator_NullGetsNone()
         {
             Optional<object> optional = (object) null;
-            optional.IfSome(_ => Assert.Fail());
+            optional.MatchSome(_ => Assert.Fail());
         }
 
         [Test]
         public void ImplicitOperator_ValueTypeGetsSome()
         {
             Optional<int> optional = 15;
-            optional.IfNone(() => Assert.Fail());
+            optional.MatchNone(() => Assert.Fail());
         }
 
         [Test]
         public void ImplicitOperator_ReferenceTypeGetsSome()
         {
             Optional<DateTime> optional = DateTime.Now;
-            optional.IfNone(() => Assert.Fail());
+            optional.MatchNone(() => Assert.Fail());
         }
 
         #endregion

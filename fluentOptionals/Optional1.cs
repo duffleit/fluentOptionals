@@ -48,9 +48,9 @@ namespace fluentOptionals
                 ? Optional.From(mapper(Value))
                 : Optional.None<TMapResult>();
 
-        public void IfSome(Action<T1> handle) => Match(handle, () => { });
+        public void MatchSome(Action<T1> handle) => Match(handle, () => { });
 
-        public void IfNone(Action handle) => Match(_ => { }, handle);
+        public void MatchNone(Action handle) => Match(_ => { }, handle);
 
         public T1 ValueOr(Func<T1> handle) => Match(_ => _, handle);
 
