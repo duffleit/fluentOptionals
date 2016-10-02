@@ -48,6 +48,12 @@ namespace fluentOptionals
                 ? Optional.From(mapper(Value))
                 : Optional.None<TMapResult>();
 
+        public Optional<T1> Shift(Func<T1, bool> condition)
+        {
+            if (IsNone) return this;
+            return (condition(Value)) ? Optional.None<T1>() : this;
+        }
+
         public void MatchSome(Action<T1> handle) => Match(handle, () => { });
 
         public void MatchNone(Action handle) => Match(_ => { }, handle);
@@ -58,7 +64,7 @@ namespace fluentOptionals
 
         public T1 ValueOrThrow(Exception exception)
         {
-            if (!IsSome) throw exception;
+            if (IsNone) throw exception;
             return Value;
         }
 

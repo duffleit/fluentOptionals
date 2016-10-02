@@ -199,6 +199,28 @@ namespace fluentOptionals.Tests
 
         #endregion
 
+        #region Shift
+
+        [Test]
+        public void Shift_WhenGivenPredicateIsTrue_ThenNoneGetsReturned()
+        {
+            10.ToSome().Shift(i => i > 5).ShouldBeNone();
+        }
+
+        [Test]
+        public void Shift_WhenGivenPredicateIsFalse_ThenSomeGetsReturned()
+        {
+            10.ToSome().Shift(i => i > 15).ShouldBeSome();
+        }
+
+        [Test]
+        public void Shift_WhenNoneIsShifted_ThenNoneGetsReturned()
+        {
+            10.ToNone().Shift(i => i > 15).ShouldBeNone();
+        }
+
+        #endregion 
+
         #region Implicit Operator
 
         [Test]
