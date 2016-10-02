@@ -12,4 +12,4 @@ environment:
        secure: jLz7jnb3ocqE8cxrWdbDQRcl+OchEBHc/3jn5H2/eKUptxiFDqptR3YiwOmUCfmV
 
 after_test: 
-  - cmd: packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.ConsoleRunner.3.2.1\tools\nunit3-console.exe" -targetargs:"/domain:single fluentOptionals.Tests/bin/debug/fluentOptionals.Tests.dll" -output:coverage.xml
+  - cmd: packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -filter:"+[*]*" -target:"packages\NUnit.ConsoleRunner.3.4.1\tools\nunit3-console.exe" -targetargs:"/domain:single fluentOptionals.Tests/bin/debug/fluentOptionals.Tests.dll" -output:coverage.xml
