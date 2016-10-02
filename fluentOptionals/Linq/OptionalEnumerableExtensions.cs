@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using fluentOptionals;
 
-namespace fluentOptionals.Extensions
+namespace FluentOptionals.Linq
 {
     public static class OptionalEnumerableExtensions
     {
