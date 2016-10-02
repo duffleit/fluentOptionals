@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluentOptionals", "fluentOptionals\fluentOptionals.csproj", "{A1DBD4A0-0B9B-48D8-9C95-4D291AFAF391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentOptionals", "fluentOptionals\FluentOptionals.csproj", "{A1DBD4A0-0B9B-48D8-9C95-4D291AFAF391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluentOptionals.Tests", "fluentOptionals.Tests\fluentOptionals.Tests.csproj", "{95A08A3F-C304-4459-A9EF-C62F16A348F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentOptionals.Tests", "fluentOptionals.Tests\FluentOptionals.Tests.csproj", "{95A08A3F-C304-4459-A9EF-C62F16A348F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

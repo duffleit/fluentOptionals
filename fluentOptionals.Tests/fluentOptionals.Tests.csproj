@@ -6,8 +6,8 @@
     <ProjectGuid>{95A08A3F-C304-4459-A9EF-C62F16A348F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>fluentOptionals.Tests</RootNamespace>
-    <AssemblyName>fluentOptionals.Tests</AssemblyName>
+    <RootNamespace>FluentOptionals.Tests</RootNamespace>
+    <AssemblyName>FluentOptionals.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -71,13 +71,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\fluentOptionals\fluentOptionals.csproj">
-      <Project>{A1DBD4A0-0B9B-48D8-9C95-4D291AFAF391}</Project>
-      <Name>NOptional</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\fluentOptionals\FluentOptionals.csproj">
+      <Project>{A1DBD4A0-0B9B-48D8-9C95-4D291AFAF391}</Project>
+      <Name>FluentOptionals</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
