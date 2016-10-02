@@ -17,7 +17,10 @@ namespace fluentOptionals
 
         internal Optional(T1 value)
         {
-            IsSome = (value != null);
+            if (value == null)
+                throw SomeCreationWithNullException.FromType<T1>();
+
+            IsSome = true;
             Value = value;
         }
 

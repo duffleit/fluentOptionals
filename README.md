@@ -53,7 +53,7 @@ If you want to receive a __Some__ or __None__-Optional explicit, you can use ``v
 
 ```csharp
 10.ToSome() //always produces a Some-Optional
-            //except the value is none, this causes a  SomeCreationFailedException
+            //except the value is none, this causes a 'SomeCreationWithNullException'
             
 10.ToNone() //ignores the value and always produces a None-Optional
 ```
