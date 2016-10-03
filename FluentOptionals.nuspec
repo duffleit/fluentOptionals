@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>FluentOptionals</id>
+        <version>1.0.0.25</version>
+        <title>Fluent Optionals</title>
+        <authors>duffleit</authors>
+        <projectUrl>https://github.com/duffleit/fluentOptionals</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>a lightweight &amp; fluent Option/Optional/Maybe Implementation for .Net &amp; Mono
+
+docu @ github: 
+https://github.com/duffleit/fluentOptionals</description>
+        <summary>a lightweight &amp; fluent Option/Optional/Maybe Implementation for .Net &amp; Mono</summary>
+        <language>en-US</language>
+        <tags>optionals, maybe, option</tags>
+    </metadata>
+    <files>
+        <file src="..\..\..\Work\fluentOptionals\fluentOptionals\bin\Release\FluentOptionals.dll" target="lib\FluentOptionals.dll" />
+    </files>
+</package>
