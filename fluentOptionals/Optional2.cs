@@ -31,22 +31,22 @@ namespace fluentOptionals
                 ? some(_o1.Value, _o2.Value)
                 : none();
 
-        public void IfSome(Action<T1, T2> handle)
+        public void MatchSome(Action<T1, T2> handle)
             => Match(handle, () => { });
 
-        public void IfNone(Action handle)
+        public void MatchNone(Action handle)
             => Match((o1, o2) => { }, handle);
-
-        #region Equals
-        
-        public bool Equals(Optional<T1, T2> other) 
-            => _o1.Equals(other._o1) && _o2.Equals(other._o2);
 
         public Optional<T1, T2, T3> Join<T3>(T3 valueToJoin)
             => new Optional<T1, T2, T3>(_o1, _o2, Optional.From<T3>(valueToJoin));
 
         public Optional<T1, T2, T3> Join<T3>(Optional<T3> optionalToJoin)
             => new Optional<T1, T2, T3>(_o1, _o2, optionalToJoin);
+
+        #region Equals
+
+        public bool Equals(Optional<T1, T2> other) 
+            => _o1.Equals(other._o1) && _o2.Equals(other._o2);
 
         #endregion
     }

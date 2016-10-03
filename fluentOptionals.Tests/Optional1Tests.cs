@@ -73,26 +73,26 @@ namespace fluentOptionals.Tests
         #region ValueOr
 
         [Test]
-        public void IfNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
+        public void MatchNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
         {
             _none.ValueOr(() => 20).Should().Be(20);
         }
 
         [Test]
-        public void IfNone_WhenOptionalIsNone_ThenValueGetsReturned()
+        public void MatchNone_WhenOptionalIsNone_ThenValueGetsReturned()
         {
             _none.ValueOr(20).Should().Be(20);
         }
 
 
         [Test]
-        public void IfNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
+        public void MatchNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
         {
             _some.ValueOr(() => 20).Should().NotBe(20);
         }
 
         [Test]
-        public void IfNone_WhenOptionalIsSome_ThenValueIsIgnored()
+        public void MatchNone_WhenOptionalIsSome_ThenValueIsIgnored()
         {
             _some.ValueOr(20).Should().NotBe(20);
         }
