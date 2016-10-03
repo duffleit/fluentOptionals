@@ -88,8 +88,8 @@ Another way to get an Optional's value is to use ``Match()``. Inspired by _patte
 var optional = "Max".ToSome();
 
 optional.Match(
-    name => Console.WriteLine("hey, " + name),
-    ()   => Console.WriteLine("we don't know your name")
+    some: name => Console.WriteLine("hey, " + name),
+    none: ()   => Console.WriteLine("we don't know your name")
 )
 ```
 
@@ -99,8 +99,8 @@ optional.Match(
 var optional = "Max".ToSome();
 
 var displayName = optional.Match(
-                        name => v.ToUpperCase(),
-                        ()   => "unknown PERSON"
+                        some: name => v.ToUpperCase(),
+                        none: ()   => "unknown PERSON"
                     )
 ```
 
