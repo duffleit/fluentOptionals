@@ -13,7 +13,7 @@ ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono__
 Usually this is the place to go into detail about Optionals and why you should use them. I won't do this as it is already done better than I ever could: 
 * you don't know what's an Optional/Option/Maybe - [read this](https://en.wikipedia.org/wiki/Option_type)
 * you know what it is, but you are not sure to use it in your project - [read this](http://programmers.stackexchange.com/a/12836)
-* you like to use them in your C# project - [download Fluent Optionals](https://github.com/duffleit/fluentOptionals)
+* you like to use them in your C# project - [download Fluent Optionals](https://www.nuget.org/packages/FluentOptionals)
 
 ---
 
