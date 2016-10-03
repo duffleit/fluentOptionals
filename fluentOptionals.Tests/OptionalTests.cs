@@ -2,7 +2,7 @@ using System;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace fluentOptionals.Tests
+namespace FluentOptionals.Tests
 {
     [TestFixture]
     public class OptionalTests

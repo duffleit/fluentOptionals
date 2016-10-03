@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace fluentOptionals
+namespace FluentOptionals
 {
     public static class Optional
     {

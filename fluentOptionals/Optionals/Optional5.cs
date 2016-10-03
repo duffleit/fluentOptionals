@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace fluentOptionals
+namespace FluentOptionals
 {
     public class Optional<T1, T2, T3, T4, T5> : 
         IOptional,
@@ -37,10 +37,10 @@ namespace fluentOptionals
                 ? some(_o1.Value, _o2.Value, _o3.Value, _o4.Value, _o5.Value)
                 : none();
 
-        public void IfSome(Action<T1, T2, T3, T4, T5> handle)
+        public void MatchSome(Action<T1, T2, T3, T4, T5> handle)
             => Match(handle, () => { });
 
-        public void IfNone(Action handle)
+        public void MatchNone(Action handle)
             => Match((o1, o2, o3, o4, o5) => { }, handle);
 
         #region Equals

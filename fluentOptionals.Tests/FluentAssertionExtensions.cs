@@ -1,6 +1,6 @@
 using FluentAssertions;
 
-namespace fluentOptionals.Tests
+namespace FluentOptionals.Tests
 {
     public static class FluentAssertionExtensions
     {

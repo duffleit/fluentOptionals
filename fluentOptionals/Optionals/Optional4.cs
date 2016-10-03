@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace fluentOptionals
+namespace FluentOptionals
 {
     public class Optional<T1, T2, T3, T4> : 
         IOptional,
@@ -42,7 +42,10 @@ namespace fluentOptionals
             => Match((o1, o2, o3, o4) => { }, handle);
 
         public Optional<T1, T2, T3, T4, T5> Join<T5>(T5 valueToJoin)
-            => new Optional<T1, T2, T3, T4, T5>(_o1, _o2, _o3, _o4, Optional.From<T5>(valueToJoin));
+            => new Optional<T1, T2, T3, T4, T5>(_o1, _o2, _o3, _o4, Optional.From(valueToJoin));
+
+        public Optional<T1, T2, T3, T4, T5> Join<T5>(T5 valueToJoin, Func<T5, bool> condition)
+            => new Optional<T1, T2, T3, T4, T5>(_o1, _o2, _o3, _o4, Optional.From(valueToJoin, condition));
 
         public Optional<T1, T2, T3, T4, T5> Join<T5>(Optional<T5> optionalToJoin)
             => new Optional<T1, T2, T3, T4, T5>(_o1, _o2, _o3, _o4, optionalToJoin);

@@ -4,7 +4,7 @@ using FluentAssertions;
 using FluentOptionals.Linq;
 using NUnit.Framework;
 
-namespace fluentOptionals.Tests
+namespace FluentOptionals.Tests.Linq
 {
     [TestFixture]
     public class OptionalEnumerableExtensionsTests
