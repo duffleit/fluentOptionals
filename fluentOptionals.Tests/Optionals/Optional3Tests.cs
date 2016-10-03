@@ -122,5 +122,23 @@ namespace FluentOptionals.Tests
 
             someHandleCalled.Should().BeTrue();
         }
+
+        [Test]
+        public void IsNone_WhenOneOptionalIsNone_ThenIsNoneIsTrue()
+        {
+            Optional.From(1)
+                .Join(2)
+                .Join(Optional.None<int>())
+                .IsNone.Should().BeTrue();
+        }
+
+        [Test]
+        public void IsSome_WhenAlOptionalsAreSome_ThenIsSomeIsTrue()
+        {
+            Optional.From(1)
+                .Join(2)
+                .Join(3)
+                .IsSome.Should().BeTrue();
+        }
     }
 }

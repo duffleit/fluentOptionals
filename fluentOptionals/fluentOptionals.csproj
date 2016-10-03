@@ -43,6 +43,8 @@
     <Compile Include="Exceptions\SomeCreationWithNullException.cs" />
     <Compile Include="IOptional.cs" />
     <Compile Include="Optional.cs" />
+    <Compile Include="Optionals\Optional7.cs" />
+    <Compile Include="Optionals\Optional6.cs" />
     <Compile Include="Optionals\Optional5.cs" />
     <Compile Include="Optionals\Optional4.cs" />
     <Compile Include="Optionals\Optional3.cs" />

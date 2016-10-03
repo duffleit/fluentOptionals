@@ -43,8 +43,17 @@ namespace FluentOptionals
         public void MatchNone(Action handle)
             => Match((o1, o2, o3, o4, o5) => { }, handle);
 
+        public Optional<T1, T2, T3, T4, T5, T6> Join<T6>(T6 valueToJoin)
+            => new Optional<T1, T2, T3, T4, T5, T6>(_o1, _o2, _o3, _o4, _o5, Optional.From(valueToJoin));
+
+        public Optional<T1, T2, T3, T4, T5, T6> Join<T6>(T6 valueToJoin, Func<T6, bool> condition)
+            => new Optional<T1, T2, T3, T4, T5, T6>(_o1, _o2, _o3, _o4, _o5, Optional.From(valueToJoin, condition));
+
+        public Optional<T1, T2, T3, T4, T5, T6> Join<T6>(Optional<T6> optionalToJoin)
+            => new Optional<T1, T2, T3, T4, T5, T6>(_o1, _o2, _o3, _o4, _o5, optionalToJoin);
+
         #region Equals
-        
+
         public bool Equals(Optional<T1, T2, T3, T4, T5> other) 
             => _o1.Equals(other._o1) && _o2.Equals(other._o2) && _o2.Equals(other._o3) && _o2.Equals(other._o4) && _o2.Equals(other._o5);
 
