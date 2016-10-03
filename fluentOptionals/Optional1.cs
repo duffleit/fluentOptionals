@@ -43,6 +43,10 @@ namespace fluentOptionals
         public TReturn Match<TReturn>(Func<T1, TReturn> some, Func<TReturn> none)
             => IsSome ? some(Value) : none();
 
+        public void MatchSome(Action<T1> handle) => Match(handle, () => { });
+
+        public void MatchNone(Action handle) => Match(_ => { }, handle);
+
         public Optional<TMapResult> Map<TMapResult>(Func<T1, TMapResult> mapper)
             => IsSome
                 ? Optional.From(mapper(Value))
@@ -53,10 +57,6 @@ namespace fluentOptionals
             if (IsNone) return this;
             return (condition(Value)) ? Optional.None<T1>() : this;
         }
-
-        public void MatchSome(Action<T1> handle) => Match(handle, () => { });
-
-        public void MatchNone(Action handle) => Match(_ => { }, handle);
 
         public T1 ValueOr(Func<T1> handle) => Match(_ => _, handle);
 
