@@ -95,40 +95,44 @@ namespace FluentOptionals.Tests.Linq
 
         #region ToOptionalList (IEnumerable<T>)
 
+        [Test]
         public void ToOptionalList_WhenListIsEmpty_ThenEmptyListGetsReturned()
         {
             new List<int>().ToOptionalList().Should().HaveCount(0);
         }
 
+        [Test]
         public void ToOptionalList_WhenListIncludesValues_ThenListOfOptionalsGetsReturned()
         {
             var list = new List<int>() {1, 2, 3, 4, 5};
             var optionalList = list.ToOptionalList();
 
             optionalList.Should().HaveSameCount(list);
-            optionalList.GetType().Should().Be(typeof (Optional<int>));
+            optionalList.First().GetType().Should().Be(typeof (Optional<int>));
         }
 
+        [Test]
         public void ToOptionalList_WhenListIncludesValuesAndNulls_ThenListOfSomesAndNonesGetsReturned()
         {
             var list = new List<string>() { "1", "2", null, null, "3", null, "4", "5" };
             var optionalList = list.ToOptionalList();
 
-            optionalList.Should().HaveCount(8);
+            optionalList.Should().HaveSameCount(list);
             optionalList.Where(o => o.IsSome).Should().HaveCount(5);
             optionalList.Where(o => o.IsNone).Should().HaveCount(3);
-            optionalList.GetType().Should().Be(typeof(Optional<string>));
+            optionalList.First().GetType().Should().Be(typeof(Optional<string>));
         }
 
+        [Test]
         public void ToOptionalList_WhenPredicateIsApplied_ThenListOfSomesAndNonesGetsReturned()
         {
             var list = new List<string>() { "1", "2", null, null, "3", null, "4", "2" };
             var optionalList = list.ToOptionalList(i => i == "2");
 
-            optionalList.Should().HaveCount(8);
-            optionalList.Where(o => o.IsSome).Should().HaveCount(6);
-            optionalList.Where(o => o.IsNone).Should().HaveCount(2);
-            optionalList.GetType().Should().Be(typeof(Optional<string>));
+            optionalList.Should().HaveSameCount(list);
+            optionalList.Where(o => o.IsSome).Should().HaveCount(2);
+            optionalList.Where(o => o.IsNone).Should().HaveCount(6);
+            optionalList.First().GetType().Should().Be(typeof(Optional<string>));
         }
 
         #endregion
