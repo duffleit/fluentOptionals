@@ -69,7 +69,10 @@ namespace fluentOptionals
         }
 
         public Optional<T1, T2> Join<T2>(T2 valueToJoin) 
-            => new Optional<T1, T2>(this, Optional.From<T2>(valueToJoin));
+            => new Optional<T1, T2>(this, Optional.From(valueToJoin));
+
+        public Optional<T1, T2> Join<T2>(T2 valueToJoin, Func<T2, bool> condition)
+            => new Optional<T1, T2>(this, Optional.From(valueToJoin, condition));
 
         public Optional<T1, T2> Join<T2>(Optional<T2> optionalToJoin) 
             => new Optional<T1, T2>(this, optionalToJoin);
