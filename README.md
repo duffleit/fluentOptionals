@@ -3,6 +3,9 @@
 # Fluent Optionals
 ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono___
 
+[![NuGet](https://img.shields.io/nuget/v/FluentOptionals.svg?maxAge=2592000)]()  
+``PM> Install-Package FluentOptionals``
+
 [![Build status](https://ci.appveyor.com/api/projects/status/bn58b7k9xeh9073a?svg=true)](https://ci.appveyor.com/project/duffleit/fluentoptionals)
 [![Build Status](https://travis-ci.org/duffleit/fluentOptionals.svg)](https://travis-ci.org/duffleit/fluentOptionals)
 [![Coverage Status](https://coveralls.io/repos/github/duffleit/fluentOptionals/badge.svg?branch=master)](https://coveralls.io/github/duffleit/fluentOptionals?branch=master)
