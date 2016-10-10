@@ -3,7 +3,7 @@
 # Fluent Optionals
 ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono___
 
-[![NuGet](https://img.shields.io/nuget/v/FluentOptionals.svg?maxAge=2592000)](https://www.nuget.org/packages/FluentOptionals)  
+[![NuGet](https://img.shields.io/nuget/v/FluentOptionals.svg)](https://www.nuget.org/packages/FluentOptionals)  
 ``PM> Install-Package FluentOptionals``
 
 [![Build status](https://ci.appveyor.com/api/projects/status/bn58b7k9xeh9073a?svg=true)](https://ci.appveyor.com/project/duffleit/fluentoptionals)
