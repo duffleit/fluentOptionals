@@ -20,7 +20,6 @@ deploy:
   skip_symbols: false
   artifact: /.*\.nupkg/
   on:
-    branch: master
     appveor_repo_tag: true
 
 environment:
