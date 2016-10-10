@@ -9,11 +9,11 @@ build:
 
 assembly_info:
   patch: true
-  file: fluentOptionals/Properties/AssemblyInfo.cs
+  file: AssemblyInfo.*
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}-rc1'
-  
+
 environment:
     COVERALLS_REPO_TOKEN:  
        secure: jLz7jnb3ocqE8cxrWdbDQRcl+OchEBHc/3jn5H2/eKUptxiFDqptR3YiwOmUCfmV
