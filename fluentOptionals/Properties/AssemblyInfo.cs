@@ -22,3 +22,6 @@ using System.Runtime.InteropServices;
 [assembly: Guid("a1dbd4a0-0b9b-48d8-9c95-4d291afaf391")]
 
 //versioning done by appveyor build
+[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
