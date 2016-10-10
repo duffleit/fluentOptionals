@@ -1,5 +1,3 @@
-version: {APPVEYOR_REPO_TAG_NAME}
-
 install:
     - nuget restore
 
@@ -11,9 +9,9 @@ build:
 assembly_info:
   patch: true
   file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  assembly_version: "%APPVEYOR_REPO_TAG_NAME%"
+  assembly_file_version: "%APPVEYOR_REPO_TAG_NAME%"
+  assembly_informational_version: "%APPVEYOR_REPO_TAG_NAME%"
 
 deploy:
   provider: NuGet
