@@ -2,7 +2,6 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>FluentOptionals</id>
-        <version>$version$</version>
         <title>Fluent Optionals</title>
         <authors>duffleit</authors>
         <projectUrl>https://github.com/duffleit/fluentOptionals</projectUrl>
