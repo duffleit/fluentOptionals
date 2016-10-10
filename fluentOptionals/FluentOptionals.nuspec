@@ -16,6 +16,6 @@ https://github.com/duffleit/fluentOptionals</description>
         <tags>optionals, maybe, option</tags>
     </metadata>
     <files>
-        <file src="bin\Release\FluentOptionals.dll" target="lib\FluentOptionals.dll" />
+        <file src="bin\Debug\FluentOptionals.dll" target="lib\FluentOptionals.dll" />
     </files>
 </package>
