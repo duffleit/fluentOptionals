@@ -1,4 +1,4 @@
-version: 1.0.{build}
+version: {APPVEYOR_REPO_TAG_NAME}
 
 install:
     - nuget restore
@@ -21,6 +21,9 @@ deploy:
     secure: cN/5QbdaICN1YRrkT4atFVJh9herFrwY7zE6XXWCASecAzW5QnMegvq7p4eDRh5f
   skip_symbols: false
   artifact: /.*\.nupkg/
+  on:
+    branch: master
+    appveor_repo_tag: true
 
 environment:
     COVERALLS_REPO_TOKEN:  
