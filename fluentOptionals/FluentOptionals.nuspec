@@ -2,6 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>FluentOptionals</id>
+        <version>$version$</version>
         <title>Fluent Optionals</title>
         <authors>duffleit</authors>
         <projectUrl>https://github.com/duffleit/fluentOptionals</projectUrl>
@@ -15,6 +16,6 @@ https://github.com/duffleit/fluentOptionals</description>
         <tags>optionals, maybe, option</tags>
     </metadata>
     <files>
-        <file src="..\..\..\Work\fluentOptionals\fluentOptionals\bin\Release\FluentOptionals.dll" target="lib\FluentOptionals.dll" />
+        <file src="bin\Release\FluentOptionals.dll" target="lib\FluentOptionals.dll" />
     </files>
 </package>
