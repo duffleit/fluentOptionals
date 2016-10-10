@@ -1,4 +1,4 @@
-version: 1.1.3
+version: 1.1.4.{build}
 
 install:
     - nuget restore
@@ -11,9 +11,9 @@ build:
 assembly_info:
   patch: true
   file: AssemblyInfo.*
-  assembly_version: "{version}.{build}"
-  assembly_file_version: "{version}.{build}"
-  assembly_informational_version: "{version}.{build}"
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
 
 deploy:
   provider: NuGet
@@ -22,6 +22,7 @@ deploy:
   skip_symbols: false
   artifact: /.*\.nupkg/
   on:
+    branch: master
     appveor_repo_tag: true
 
 environment:
