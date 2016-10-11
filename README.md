@@ -39,9 +39,9 @@ var y = value.ToOptional();
 var z = Optional.From(value)
 ```
 
-Those three approaches will always produce the same result. If the given value is _null_ a __None__-Optional is returned, in all other cases a __Some__-Optional.
+Those three approaches will always produce the same result. If the given value is _null_ a __None__-Optional is returned. In all other cases you will receive a __Some__-Optional.
 
-If _null_ is not the only decision criterion, ``ToOptional()`` or ``Optional.From()`` can be called with a _predicate_. Base on this a __Some__ or __None__-Optional is created. 
+If _null_ is not the only decision criterion, ``ToOptional()`` or ``Optional.From()`` can be called with a _predicate_. Based on this a __Some__ or __None__-Optional is created. 
 
 ```csharp
 var value = "david";
@@ -67,7 +67,7 @@ If you want to receive a __Some__ or __None__-Optional explicit, you can use ``v
 
 When retrieving values, Optionals force you to always consider __Some__ and __None__ (if a value is present or not).
 
-``ValueOr()`` is one approach to retrieve an Optional's value. 
+``ValueOr()`` is the easiest approach to retrieve an Optional's value. 
 
 ```csharp
 "Max".ToSome().ValueOr("unknown name"); //returns "Max"
@@ -79,7 +79,7 @@ When retrieving values, Optionals force you to always consider __Some__ and __No
 "Max".ToNone().ValueOrThrow(new Exception("name was not provided")); //throws exception 
 ```
 
-To verify if an Optional is __Some__ or __None__ the properties ``IsSome`` and ``IsNone`` are provided.
+To additionally verify if an Optional is __Some__ or __None__ the properties ``IsSome`` and ``IsNone`` are provided.
 
 ### Match  
 Another way to get an Optional's value is to use ``Match()``. Inspired by _pattern matching_ it provides a nice way to handle __Some__ and __None__-Optionals.
@@ -116,7 +116,7 @@ Beside ``Match()`` there are provided more specific methods called ``IfSome()`` 
 "test".ToOptional().Map(i => null) //returns None-Optional<int> 
 ```
 
-``Map()`` can also change the Optional's type.
+``Map()`` can of course also change the Optional's type.
 
 ```csharp
 Optional<string> result = 10.ToOptional().Map(i => i.ToString()) //returns Some-Optional<String> -> "10"
@@ -124,7 +124,7 @@ Optional<string> result = 10.ToNone().Map(i => i.ToString()) //returns None-Opti
 Optional<string> result = Optional.None<int>().Map(i => null) //return None-Optional<String>
 ```
 
-``Shift()`` provides a possibility to change a __Some__ to a __None__-Optional. If ``Shift()`` is called on a __None__-Optional, it does not alter anything. 
+``Shift()`` provides a possibility to change a __Some__ to a __None__-Optional. If ``Shift()`` is called on a __None__-Optional, it doesn't alter anything. 
 
 ```csharp
 var transformed = 10.ToOptional().Shift(v => v < 100); //returns None-Optional<int>
@@ -146,8 +146,8 @@ Optional
     )
 ```
 
-A joined Optional evaluates to none as soon as a __None__-Optional gets joined. 
-_Fluent Optionals_ let you join up to 7 Optionals, and beside ``Match()`` also ``IfSome()``, ``IfNone()``, ``IsSome`` and ``IsNone`` can be called.
+A joined Optional evaluates to none as soon as a single __None__-Optional is joined. 
+_Fluent Optionals_ let you join up to seven Optionals, and beside ``Match()``, these composite Optionals also provide ``IfSome()``, ``IfNone()``, ``IsSome`` and ``IsNone``.
 
 ## IEnumerable-Extensions
 
