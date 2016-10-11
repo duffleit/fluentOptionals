@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using FluentOptionals.Linq;
@@ -26,14 +27,43 @@ namespace FluentOptionals.Tests.Linq
             first.IfSome(i => i.Should().Be(1));
         }
 
-
         [Test]
-        public void FirstOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
+        public void FirstOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfFirstElementGetsReturned()
         {
             var first = new List<int> { 10 }.FirstOrNone();
 
             first.ShouldBeSome();
             first.IfSome(i => i.Should().Be(10));
+        }
+
+        [Test]
+        public void FirstOrNone_WhenListWithFristItemWhichIsNullIsGiven_ThenNoneGetsReturned()
+        {
+            new List<string> { null, string.Empty }.FirstOrNone().ShouldBeNone();
+        }
+
+        [Test]
+        public void FirstOrNoneWithPredicate_WhenEmptyListIsGiven_ThenNoneGetsReturned()
+        {
+            new List<int>().FirstOrNone(s => s == 0).ShouldBeNone();
+        }
+
+        [Test]
+        public void FirstOrNoneWithPredicate_WhenListWithNoMatchingItemsIsGiven_ThenNoneGetsReturned()
+        {
+            var first = new List<int> { 1, 2, 3 }.FirstOrNone(s => s > 4);
+
+            first.ShouldBeNone();
+        }
+
+
+        [Test]
+        public void FirstOrNoneWithPredicate_WhenListWithMatchingItemsIsGiven_ThenFirstSomeGetsReturned()
+        {
+            var first = new List<int> { 10, 20, 30 }.FirstOrNone(s => s >= 20);
+
+            first.ShouldBeSome();
+            first.IfSome(i => i.Should().Be(20));
         }
 
         #endregion
@@ -55,14 +85,42 @@ namespace FluentOptionals.Tests.Linq
             last.IfSome(i => i.Should().Be(3));
         }
 
-
         [Test]
-        public void LastOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
+        public void LastOrNone_WhenListWithSingleItemIsGiven_ThenSomeOfLastElementGetsReturned()
         {
             var last = new List<int> { 10 }.LastOrNone();
 
             last.ShouldBeSome();
             last.IfSome(i => i.Should().Be(10));
+        }
+
+        [Test]
+        public void LastOrNoneWithPredicate_WhenEmptyListIsGiven_ThenNoneGetsReturned()
+        {
+            new List<int>().LastOrNone(s => s == 0).ShouldBeNone();
+        }
+
+        [Test]
+        public void LastOrNoneWithPredicate_WhenListWithNoMatchingItemsIsGiven_ThenNoneGetsReturned()
+        {
+            var last = new List<int> { 1, 2, 3 }.LastOrNone(s => s > 4);
+
+            last.ShouldBeNone();
+        }
+
+        [Test]
+        public void LastOrNone_WhenListWithLastItemWhichIsNullIsGiven_ThenNoneGetsReturned()
+        {
+            new List<string> { string.Empty, null }.LastOrNone().ShouldBeNone();
+        }
+
+        [Test]
+        public void LastOrNoneWithPredicate_WhenListWithMatchingItemsIsGiven_ThenLastSomeGetsReturned()
+        {
+            var last = new List<int> { 10, 20, 30 }.LastOrNone(s => s >= 20);
+
+            last.ShouldBeSome();
+            last.IfSome(i => i.Should().Be(30));
         }
 
         #endregion
@@ -89,6 +147,34 @@ namespace FluentOptionals.Tests.Linq
 
             single.ShouldBeSome();
             single.IfSome(i => i.Should().Be(10));
+        }
+
+        [Test]
+        public void SingleOrNone_WhenListWithSingleItemWhichIsNullIsGiven_ThenNoneGetsReturned()
+        {
+            new List<string> { null }.SingleOrNone().ShouldBeNone();
+        }
+
+
+        [Test]
+        public void SingleOrNoneWithPredicate_WhenEmptyListIsGiven_ThenNoneGetsReturned()
+        {
+            new List<int>().SingleOrNone(s => s == 0).ShouldBeNone();
+        }
+
+        [Test]
+        public void SingleOrNoneWithPredicate_WhenListWithMultipleItemsIsGiven_ThenNoneGetsReturned()
+        {
+            new List<int> { 1, 1, 1 }.SingleOrNone(s => s == 1).ShouldBeNone();
+        }
+
+        [Test]
+        public void SingleOrNoneWithPredicate_WhenListWithSingleItemIsGiven_ThenSomeOfSingleElementGetsReturned()
+        {
+            var single = new List<int> { 1, 2, 3 }.SingleOrNone(s => s == 2);
+
+            single.ShouldBeSome();
+            single.IfSome(i => i.Should().Be(2));
         }
 
         #endregion
