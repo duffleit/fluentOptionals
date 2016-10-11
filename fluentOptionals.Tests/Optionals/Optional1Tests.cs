@@ -159,7 +159,7 @@ namespace FluentOptionals.Tests
 
 
         [Test]
-        public void Match_CanReturNull()
+        public void Match_CanReturnNull()
         {
             _none.Match(
                 some: _ => null as string,
@@ -171,7 +171,7 @@ namespace FluentOptionals.Tests
         #region Map
 
         [Test]
-        public void Map_WhenOpationalIsNone_ThenNoneGetsReturnedAgain()
+        public void Map_WhenOptionalIsNone_ThenNoneGetsReturnedAgain()
         {
             var resultOptional = 10.ToNone().Map(_ => "test");
 
@@ -180,7 +180,7 @@ namespace FluentOptionals.Tests
         }
 
         [Test]
-        public void Map_WhenOpationalIsSome_ThenSomeGetsReturnedAgain()
+        public void Map_WhenOptionalIsSome_ThenSomeGetsReturnedAgain()
         {
             var resultOptional = 10.ToSome().Map(_ => "test");
 
@@ -189,7 +189,7 @@ namespace FluentOptionals.Tests
         }
 
         [Test]
-        public void Map_WhenMapOpationReturnsNull_ThenNoneGetsReturned()
+        public void Map_WhenMappedOptionalReturnsNull_ThenNoneGetsReturned()
         {
             var resultOptional = 10.ToSome().Map<string>(_ => null);
 
@@ -234,14 +234,14 @@ namespace FluentOptionals.Tests
         public void ImplicitOperator_ValueTypeGetsSome()
         {
             Optional<int> optional = 15;
-            optional.MatchNone(() => Assert.Fail());
+            optional.MatchNone(Assert.Fail);
         }
 
         [Test]
         public void ImplicitOperator_ReferenceTypeGetsSome()
         {
             Optional<DateTime> optional = DateTime.Now;
-            optional.MatchNone(() => Assert.Fail());
+            optional.MatchNone(Assert.Fail);
         }
 
         #endregion

@@ -49,7 +49,7 @@ namespace FluentOptionals.Tests
         }
 
         [Test]
-        public void Match_WhenAllOptionalsAreSome_ThenHandleGetsRightParamters()
+        public void Match_WhenAllOptionalsAreSome_ThenHandleGetsRightParameters()
         {
             var someHandleCalled = false;
             var noneHandleCalled = false;

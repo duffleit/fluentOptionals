@@ -105,7 +105,7 @@ namespace FluentOptionals.Tests.Linq
         public void ToOptionalList_WhenListIncludesValues_ThenListOfOptionalsGetsReturned()
         {
             var list = new List<int>() {1, 2, 3, 4, 5};
-            var optionalList = list.ToOptionalList();
+            var optionalList = list.ToOptionalList().ToList();
 
             optionalList.Should().HaveSameCount(list);
             optionalList.First().GetType().Should().Be(typeof (Optional<int>));
@@ -115,7 +115,7 @@ namespace FluentOptionals.Tests.Linq
         public void ToOptionalList_WhenListIncludesValuesAndNulls_ThenListOfSomesAndNonesGetsReturned()
         {
             var list = new List<string>() { "1", "2", null, null, "3", null, "4", "5" };
-            var optionalList = list.ToOptionalList();
+            var optionalList = list.ToOptionalList().ToList();
 
             optionalList.Should().HaveSameCount(list);
             optionalList.Where(o => o.IsSome).Should().HaveCount(5);
@@ -127,7 +127,7 @@ namespace FluentOptionals.Tests.Linq
         public void ToOptionalList_WhenPredicateIsApplied_ThenListOfSomesAndNonesGetsReturned()
         {
             var list = new List<string>() { "1", "2", null, null, "3", null, "4", "2" };
-            var optionalList = list.ToOptionalList(i => i == "2");
+            var optionalList = list.ToOptionalList(i => i == "2").ToList();
 
             optionalList.Should().HaveSameCount(list);
             optionalList.Where(o => o.IsSome).Should().HaveCount(2);

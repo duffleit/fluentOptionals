@@ -5,7 +5,7 @@ namespace FluentOptionals
     public class SomeCreationWithNullException : Exception
     {
         public SomeCreationWithNullException() : 
-            base("Optional-Some cannoat be created with null.")
+            base("Optional-Some cannot be created with null.")
         { }
 
         private SomeCreationWithNullException(string message) : base(message){ }
