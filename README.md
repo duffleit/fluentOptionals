@@ -85,7 +85,7 @@ To verify if an Optional is __Some__ or __None__ the properties ``IsSome`` and `
 Another way to get an Optional's value is to use ``Match()``. Inspired by _pattern matching_ it provides a nice way to handle __Some__ and __None__-Optionals.
 
 ```csharp
-var optional = "Max".ToSome();
+var optional = "Paul".ToSome();
 
 optional.Match(
     some: name => Console.WriteLine("hey, " + name),
@@ -96,7 +96,7 @@ optional.Match(
 ``Match`` can also return a value:
 
 ```csharp
-var optional = "Max".ToSome();
+var optional = "Paul".ToSome();
 
 var displayName = optional.Match(
                         some: name => v.ToUpperCase(),
@@ -171,5 +171,5 @@ _Fluent Optionals_ let you join up to 7 Optionals, and beside ``Match()`` also `
 
 # Thanks!
 
-Many thanks to __paulroho__ and __thomaseizinger__ for providing inspiration and feedback.  
+Many thanks to [__paulroho__](https://github.com/paulroho) and [__thomaseizinger__](https://github.com/thomaseizinger) for providing inspiration and feedback.  
 And of course to Tony Hoare, if he won't have made his [one billion dollar mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare), this library would be absolutely useless. (:
