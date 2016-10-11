@@ -91,8 +91,11 @@ namespace FluentOptionals
                 ? -1 : Comparer<T1>.Default.Compare(Value, other);
 
 
-        public bool Equals(Optional<T1> other) 
-            => IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(Value, other.Value);
+        public bool Equals(Optional<T1> other)
+        {
+            return other != null && (IsNone && other.IsNone ||
+                                     IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(Value, other.Value));
+        }
 
         public bool Equals(T1 other) 
             => !IsNone && EqualityComparer<T1>.Default.Equals(Value, other);
