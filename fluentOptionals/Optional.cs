@@ -16,7 +16,7 @@ namespace FluentOptionals
 
         public static Optional<T> From<T>(T value)
         {
-            return (value == null) ? None<T>() : Some(value);
+            return value == null ? None<T>() : Some(value);
         }
 
         public static Optional<T> From<T>(T value, Func<T, bool> condition)
@@ -34,6 +34,7 @@ namespace FluentOptionals
             return Optional.Some(value);
         }
 
+        // ReSharper disable once UnusedParameter.Global
         public static Optional<T> ToNone<T>(this T value)
         {
             return Optional.None<T>();

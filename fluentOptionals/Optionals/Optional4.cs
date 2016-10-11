@@ -54,7 +54,7 @@ namespace FluentOptionals
 
         public bool Equals(Optional<T1, T2, T3, T4> other)
         {
-            return other != null && (_o1.Equals(other._o1) && _o2.Equals(other._o2) && _o2.Equals(other._o3) && _o2.Equals(other._o4));
+            return other != null && _o1.Equals(other._o1) && _o2.Equals(other._o2) && _o2.Equals(other._o3) && _o2.Equals(other._o4);
         }
 
         #endregion

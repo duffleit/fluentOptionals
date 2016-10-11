@@ -55,7 +55,7 @@ namespace FluentOptionals
         public Optional<T1> Shift(Func<T1, bool> condition)
         {
             if (IsNone) return this;
-            return (condition(Value)) ? Optional.None<T1>() : this;
+            return condition(Value) ? Optional.None<T1>() : this;
         }
 
         public T1 ValueOr(Func<T1> handle) => Match(_ => _, handle);
