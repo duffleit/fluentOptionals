@@ -31,10 +31,10 @@ namespace FluentOptionals
                 ? some(_o1.Value, _o2.Value)
                 : none();
 
-        public void MatchSome(Action<T1, T2> handle)
+        public void IfSome(Action<T1, T2> handle)
             => Match(handle, () => { });
 
-        public void MatchNone(Action handle)
+        public void IfNone(Action handle)
             => Match((o1, o2) => { }, handle);
 
         public Optional<T1, T2, T3> Join<T3>(T3 valueToJoin)

@@ -104,7 +104,7 @@ var displayName = optional.Match(
                     )
 ```
 
-Beside ``Match()`` there are provided more specific methods called ``MatchSome()``  and ``MatchNone()``. They only take one action.
+Beside ``Match()`` there are provided more specific methods called ``IfSome()``  and ``IfNone()``. They only take one action.
 
 ## Mapping Optionals
 
@@ -147,7 +147,7 @@ Optional
 ```
 
 A joined Optional evaluates to none as soon as a __None__-Optional gets joined. 
-_Fluent Optionals_ let you join up to 7 Optionals, and beside ``Match()`` also ``MatchSome()``, ``MatchNone()``, ``IsSome`` and ``IsNone`` can be called.
+_Fluent Optionals_ let you join up to 7 Optionals, and beside ``Match()`` also ``IfSome()``, ``IfNone()``, ``IsSome`` and ``IsNone`` can be called.
 
 ## IEnumerable-Extensions
 

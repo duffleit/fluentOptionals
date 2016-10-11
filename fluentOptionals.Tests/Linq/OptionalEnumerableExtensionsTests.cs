@@ -23,7 +23,7 @@ namespace FluentOptionals.Tests.Linq
             var first = new List<int> {1, 2, 3}.FirstOrNone();
 
             first.ShouldBeSome();
-            first.MatchSome(i => i.Should().Be(1));
+            first.IfSome(i => i.Should().Be(1));
         }
 
 
@@ -33,7 +33,7 @@ namespace FluentOptionals.Tests.Linq
             var first = new List<int> { 10 }.FirstOrNone();
 
             first.ShouldBeSome();
-            first.MatchSome(i => i.Should().Be(10));
+            first.IfSome(i => i.Should().Be(10));
         }
 
         #endregion
@@ -52,7 +52,7 @@ namespace FluentOptionals.Tests.Linq
             var last = new List<int> { 1, 2, 3 }.LastOrNone();
 
             last.ShouldBeSome();
-            last.MatchSome(i => i.Should().Be(3));
+            last.IfSome(i => i.Should().Be(3));
         }
 
 
@@ -62,7 +62,7 @@ namespace FluentOptionals.Tests.Linq
             var last = new List<int> { 10 }.LastOrNone();
 
             last.ShouldBeSome();
-            last.MatchSome(i => i.Should().Be(10));
+            last.IfSome(i => i.Should().Be(10));
         }
 
         #endregion
@@ -88,7 +88,7 @@ namespace FluentOptionals.Tests.Linq
             var single = new List<int> { 10 }.SingleOrNone();
 
             single.ShouldBeSome();
-            single.MatchSome(i => i.Should().Be(10));
+            single.IfSome(i => i.Should().Be(10));
         }
 
         #endregion

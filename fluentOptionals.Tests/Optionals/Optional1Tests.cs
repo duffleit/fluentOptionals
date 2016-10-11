@@ -17,53 +17,53 @@ namespace FluentOptionals.Tests
             _none = Optional.None<int>();
         }
 
-        #region MatchSome
+        #region IfSome
 
         [Test]
-        public void MatchSome_HandleIsNotCalledOnNone()
+        public void IfSome_HandleIsNotCalledOnNone()
         {
             var handleCalled = false;
-            _none.MatchSome(_ => handleCalled = true);
+            _none.IfSome(_ => handleCalled = true);
 
             handleCalled.Should().Be(false);
         }
 
         [Test]
-        public void MatchSome_HandleIsCalledOnSome()
+        public void IfSome_HandleIsCalledOnSome()
         {
             var handleCalled = false;
-            _some.MatchSome(_ => handleCalled = true);
+            _some.IfSome(_ => handleCalled = true);
 
             handleCalled.Should().Be(true);
         }
 
         [Test]
-        public void MatchSome_HandleReturnsRightValue()
+        public void IfSome_HandleReturnsRightValue()
         {
             var returnedValue = 0;
-            _some.MatchSome(i => returnedValue = i);
+            _some.IfSome(i => returnedValue = i);
 
             returnedValue.Should().Be(1);
         }
 
         #endregion
 
-        #region MatchNone
+        #region IfNone
 
         [Test]
-        public void MatchNone_HandleIsNotCalledOnSome()
+        public void IfNone_HandleIsNotCalledOnSome()
         {
             var handleCalled = false;
-            _some.MatchNone(() => handleCalled = true);
+            _some.IfNone(() => handleCalled = true);
 
             handleCalled.Should().Be(false);
         }
 
         [Test]
-        public void MatchNone_HandleIsCalledOnNone()
+        public void IfNone_HandleIsCalledOnNone()
         {
             var handleCalled = false;
-            _none.MatchNone(() => handleCalled = true);
+            _none.IfNone(() => handleCalled = true);
 
             handleCalled.Should().Be(true);
         }
@@ -73,26 +73,26 @@ namespace FluentOptionals.Tests
         #region ValueOr
 
         [Test]
-        public void MatchNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
+        public void IfNone_WhenOptionalIsNone_ThenValueFromHandleGetsReturned()
         {
             _none.ValueOr(() => 20).Should().Be(20);
         }
 
         [Test]
-        public void MatchNone_WhenOptionalIsNone_ThenValueGetsReturned()
+        public void IfNone_WhenOptionalIsNone_ThenValueGetsReturned()
         {
             _none.ValueOr(20).Should().Be(20);
         }
 
 
         [Test]
-        public void MatchNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
+        public void IfNone_WhenOptionalIsSome_ThenValueFromHandleIsIgnored()
         {
             _some.ValueOr(() => 20).Should().NotBe(20);
         }
 
         [Test]
-        public void MatchNone_WhenOptionalIsSome_ThenValueIsIgnored()
+        public void IfNone_WhenOptionalIsSome_ThenValueIsIgnored()
         {
             _some.ValueOr(20).Should().NotBe(20);
         }
@@ -227,21 +227,21 @@ namespace FluentOptionals.Tests
         public void ImplicitOperator_NullGetsNone()
         {
             Optional<object> optional = (object) null;
-            optional.MatchSome(_ => Assert.Fail());
+            optional.IfSome(_ => Assert.Fail());
         }
 
         [Test]
         public void ImplicitOperator_ValueTypeGetsSome()
         {
             Optional<int> optional = 15;
-            optional.MatchNone(Assert.Fail);
+            optional.IfNone(Assert.Fail);
         }
 
         [Test]
         public void ImplicitOperator_ReferenceTypeGetsSome()
         {
             Optional<DateTime> optional = DateTime.Now;
-            optional.MatchNone(Assert.Fail);
+            optional.IfNone(Assert.Fail);
         }
 
         #endregion

@@ -43,9 +43,9 @@ namespace FluentOptionals
         public TReturn Match<TReturn>(Func<T1, TReturn> some, Func<TReturn> none)
             => IsSome ? some(Value) : none();
 
-        public void MatchSome(Action<T1> handle) => Match(handle, () => { });
+        public void IfSome(Action<T1> handle) => Match(handle, () => { });
 
-        public void MatchNone(Action handle) => Match(_ => { }, handle);
+        public void IfNone(Action handle) => Match(_ => { }, handle);
 
         public Optional<TMapResult> Map<TMapResult>(Func<T1, TMapResult> mapper)
             => IsSome

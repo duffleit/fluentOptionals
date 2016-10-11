@@ -104,7 +104,7 @@ namespace FluentOptionals.Tests
         }
 
         [Test]
-        public void MatchNone_WhenOneOptionalIsNone_ThenMatchSomeHandleGetsCalled()
+        public void IfNone_WhenOneOptionalIsNone_ThenIfSomeHandleGetsCalled()
         {
             var noneHandleCalled = false;
 
@@ -112,13 +112,13 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(Optional.None<int>())
-                .MatchNone(() => noneHandleCalled = true);
+                .IfNone(() => noneHandleCalled = true);
 
             noneHandleCalled.Should().BeTrue();
         }
 
         [Test]
-        public void MatchSome_WhenAllOptionalsAreSome_ThenMatchSomeHandleGetsCalled()
+        public void IfSome_WhenAllOptionalsAreSome_ThenIfSomeHandleGetsCalled()
         {
             var someHandleCalled = false;
 
@@ -126,7 +126,7 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(4)
-                .MatchSome((p1, p2, p3, p4) => someHandleCalled = true);
+                .IfSome((p1, p2, p3, p4) => someHandleCalled = true);
 
             someHandleCalled.Should().BeTrue();
         }
