@@ -191,7 +191,7 @@ namespace FluentOptionals.Tests
         [Test]
         public void Map_WhenMappedOptionalReturnsNull_ThenNoneGetsReturned()
         {
-            var resultOptional = 10.ToSome().Map<string>(_ => null);
+            var resultOptional = 10.ToSome().Map<int, string>(_ => null);
 
             resultOptional.ShouldBeNone();
             typeof (Optional<string>).Should().Be(resultOptional.GetType());
@@ -204,19 +204,19 @@ namespace FluentOptionals.Tests
         [Test]
         public void Shift_WhenGivenPredicateIsTrue_ThenNoneGetsReturned()
         {
-            10.ToSome().Shift(i => i > 5).ShouldBeNone();
+            10.ToSome().Filter(i => i > 5).ShouldBeNone();
         }
 
         [Test]
         public void Shift_WhenGivenPredicateIsFalse_ThenSomeGetsReturned()
         {
-            10.ToSome().Shift(i => i > 15).ShouldBeSome();
+            10.ToSome().Filter(i => i > 15).ShouldBeSome();
         }
 
         [Test]
         public void Shift_WhenNoneIsShifted_ThenNoneGetsReturned()
         {
-            10.ToNone().Shift(i => i > 15).ShouldBeNone();
+            10.ToNone().Filter(i => i > 15).ShouldBeNone();
         }
 
         #endregion 

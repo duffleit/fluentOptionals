@@ -41,17 +41,6 @@ namespace FluentOptionals
 
         public void IfNone(Action handle) => Match(_ => { }, handle);
 
-        public Optional<TMapResult> Map<TMapResult>(Func<T1, TMapResult> mapper)
-            => IsSome
-                ? Optional.From(mapper(Value))
-                : Optional.None<TMapResult>();
-
-        public Optional<T1> Shift(Func<T1, bool> condition)
-        {
-            if (IsNone) return this;
-            return condition(Value) ? Optional.None<T1>() : this;
-        }
-
         public T1 ValueOr(Func<T1> handle) => Match(_ => _, handle);
 
         public T1 ValueOr(T1 value) => Match(_ => _, () => value);
