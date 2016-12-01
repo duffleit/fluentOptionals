@@ -29,9 +29,14 @@ namespace FluentOptionals
 
             return condition(value) ? Some(value) : None<T>();
         }
+
+        public static Optional<T> From<T>(T? nullable) where T : struct
+        {
+            return nullable?.ToSome() ?? None<T>();
+        }
     }
 
-    #endregion 
+    #endregion
 
     public struct Optional<T> :
         IComparable<Optional<T>>,

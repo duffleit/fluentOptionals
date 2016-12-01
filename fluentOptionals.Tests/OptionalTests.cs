@@ -82,6 +82,18 @@ namespace FluentOptionals.Tests
             ((string) null).ToOptional(x => x.Length == 10).ShouldBeNone();
         }
 
+        [Test]
+        public void ToOptional_WhenNullableWithoutValueIsGiven_ThenNoneGetsReturned()
+        {
+            new int?().ToOptional().ShouldBeNone();
+        }
+
+        [Test]
+        public void ToOptional_WhenNullableWithValueIsGiven_ThenSomeGetsReturned()
+        {
+            new int?(10).ToOptional().ShouldBeSome();
+        }
+
         #endregion
     }
 

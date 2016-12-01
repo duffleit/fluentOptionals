@@ -25,5 +25,10 @@ namespace FluentOptionals
         {
             return Optional.From(value, condition);
         }
+
+        public static Optional<T> ToOptional<T>(T? nullable) where T : struct
+        {
+            return Optional.From(nullable);
+        }
     }
 }
