@@ -10,5 +10,10 @@ namespace FluentOptionals.Composition
         {
             return optional.Match(_ => true, False);
         }
+
+        public static T ValueOrDefault<T>(this Optional<T> optional)
+        {
+            return optional.ValueOr(default(T));
+        }
     }
 }

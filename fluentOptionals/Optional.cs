@@ -50,24 +50,24 @@ namespace FluentOptionals
                 throw SomeCreationWithNullException.FromType<T>();
 
             _isSome = true;
-            Value = value;
+            _value = value;
         }
 
         public static implicit operator Optional<T>(T value) => Optional.From(value);
 
         private readonly bool _isSome;
-        internal readonly T Value;
+        private readonly T _value;
 
         public void Match(Action<T> some, Action none)
         {
             if (_isSome)
-                some(Value);
+                some(_value);
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T, TReturn> some, Func<TReturn> none)
-            => _isSome ? some(Value) : none();
+            => _isSome ? some(_value) : none();
 
         public void IfSome(Action<T> handle) => Match(handle, () => { });
 
@@ -80,7 +80,7 @@ namespace FluentOptionals
         public T ValueOrThrow(Exception exception)
         {
             if (!_isSome) throw exception;
-            return Value;
+            return _value;
         }
 
         public Optional<T, T2> Join<T2>(T2 valueToJoin)
@@ -97,17 +97,17 @@ namespace FluentOptionals
         public int CompareTo(Optional<T> other)
             => !_isSome && !other._isSome
                 ? 0 : _isSome && other._isSome
-                    ? Comparer<T>.Default.Compare(Value, other.Value)
+                    ? Comparer<T>.Default.Compare(_value, other._value)
                     : _isSome ? -1 : 1;
 
         public int CompareTo(T other)
-            => !_isSome ? -1 : Comparer<T>.Default.Compare(Value, other);
+            => !_isSome ? -1 : Comparer<T>.Default.Compare(_value, other);
 
         public bool Equals(Optional<T> other) 
-            => !_isSome && !other._isSome || _isSome && other._isSome && EqualityComparer<T>.Default.Equals(Value, other.Value);
+            => !_isSome && !other._isSome || _isSome && other._isSome && EqualityComparer<T>.Default.Equals(_value, other._value);
 
         public bool Equals(T other)
-            => _isSome && EqualityComparer<T>.Default.Equals(Value, other);
+            => _isSome && EqualityComparer<T>.Default.Equals(_value, other);
 
         #endregion
     }

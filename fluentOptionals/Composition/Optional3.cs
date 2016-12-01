@@ -22,14 +22,14 @@ namespace FluentOptionals.Composition
         public void Match(Action<T1, T2, T3> some, Action none)
         {
             if (IsSome)
-                some(_o1.Value, _o2.Value, _o3.Value);
+                some(_o1.ValueOrDefault(), _o2.ValueOrDefault(), _o3.ValueOrDefault());
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T1, T2, T3, TReturn> some, Func<TReturn> none)
             => IsSome 
-                ? some(_o1.Value, _o2.Value, _o3.Value)
+                ? some(_o1.ValueOrDefault(), _o2.ValueOrDefault(), _o3.ValueOrDefault())
                 : none();
 
         public void IfSome(Action<T1, T2, T3> handle)
