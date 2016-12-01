@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace FluentOptionals.Tests
+namespace FluentOptionals.Tests.Compositions
 {
     [TestFixture]
     public class Optional2Tests

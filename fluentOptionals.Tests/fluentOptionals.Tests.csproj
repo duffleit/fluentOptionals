@@ -60,16 +60,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Optionals\Optional7Tests.cs" />
-    <Compile Include="Optionals\Optional6Tests.cs" />
-    <Compile Include="Optionals\Optional5Tests.cs" />
-    <Compile Include="Optionals\Optional4Tests.cs" />
-    <Compile Include="Optionals\Optional3Tests.cs" />
-    <Compile Include="Optionals\Optional2Tests.cs" />
+    <Compile Include="Compositions\Optional7Tests.cs" />
+    <Compile Include="Compositions\Optional6Tests.cs" />
+    <Compile Include="Compositions\Optional5Tests.cs" />
+    <Compile Include="Compositions\Optional4Tests.cs" />
+    <Compile Include="Compositions\Optional3Tests.cs" />
+    <Compile Include="Compositions\Optional2Tests.cs" />
     <Compile Include="FluentAssertionExtensions.cs" />
     <Compile Include="OptionalTests.cs" />
     <Compile Include="Linq\OptionalEnumerableExtensionsTests.cs" />
-    <Compile Include="Optionals\Optional1Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

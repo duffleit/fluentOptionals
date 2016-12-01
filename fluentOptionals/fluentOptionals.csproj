@@ -42,16 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\SomeCreationWithNullException.cs" />
+    <Compile Include="OptionalCreateExtensions.cs" />
     <Compile Include="OptionalTransformations.cs" />
     <Compile Include="Optional.cs" />
-    <Compile Include="Optionals\Optional7.cs" />
-    <Compile Include="Optionals\Optional6.cs" />
-    <Compile Include="Optionals\Optional5.cs" />
-    <Compile Include="Optionals\Optional4.cs" />
-    <Compile Include="Optionals\Optional3.cs" />
-    <Compile Include="Optionals\Optional2.cs" />
+    <Compile Include="Composition\Optional7.cs" />
+    <Compile Include="Composition\Optional6.cs" />
+    <Compile Include="Composition\Optional5.cs" />
+    <Compile Include="Composition\Optional4.cs" />
+    <Compile Include="Composition\Optional3.cs" />
+    <Compile Include="Composition\Optional2.cs" />
     <Compile Include="Linq\OptionalEnumerableExtensions.cs" />
-    <Compile Include="Optionals\Optional1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

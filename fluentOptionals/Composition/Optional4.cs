@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentOptionals
+namespace FluentOptionals.Composition
 {
     public struct Optional<T1, T2, T3, T4> : 
         IEquatable<Optional<T1, T2, T3, T4>>

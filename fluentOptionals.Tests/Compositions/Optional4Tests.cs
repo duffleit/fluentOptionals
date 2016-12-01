@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace FluentOptionals.Tests
+namespace FluentOptionals.Tests.Compositions
 {
     [TestFixture]
-    public class Optional5Tests
+    public class Optional4Tests
     {
         [Test]
         public void Match_WhenAllOptionalsAreSome_ThenSomeHandleGetsCalled()
@@ -16,9 +16,8 @@ namespace FluentOptionals.Tests
                     .Join(2)
                     .Join(3)
                     .Join(4)
-                    .Join(5)
                     .Match(
-                        some: (p1, p2, p3, p4, p5) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -35,10 +34,9 @@ namespace FluentOptionals.Tests
             Optional.From(1)
                     .Join(2)
                     .Join(3)
-                    .Join(4)
                     .Join(Optional.None<string>())
                     .Match(
-                        some: (p1, p2, p3, p4, p5) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -56,16 +54,14 @@ namespace FluentOptionals.Tests
                     .Join(2)
                     .Join(3)
                     .Join(4)
-                    .Join(5)
                     .Match(
-                        some: (p1, p2, p3, p4, p5) =>
+                        some: (p1, p2, p3, p4) =>
                         {
                             someHandleCalled = true;
                             p1.Should().Be(1);
                             p2.Should().Be(2);
                             p3.Should().Be(3);
                             p4.Should().Be(4);
-                            p5.Should().Be(5);
                         },
                         none: () => noneHandleCalled = true
                     );
@@ -82,9 +78,8 @@ namespace FluentOptionals.Tests
                         .Join(2)
                         .Join(3)
                         .Join(4)
-                        .Join(5)
                         .Match(
-                            some: (p1, p2, p3, p4, p5) => "some",
+                            some: (p1, p2, p3, p4) => "some",
                             none: () => "none"
                         );
 
@@ -99,10 +94,9 @@ namespace FluentOptionals.Tests
                 Optional.From(1)
                         .Join(2)
                         .Join(3)
-                        .Join(4)
                         .Join(Optional.None<int>())
                         .Match(
-                            some: (p1, p2, p3, p4, p5) => "some",
+                            some: (p1, p2, p3, p4) => "some",
                             none: () => "none"
                         );
 
@@ -117,7 +111,6 @@ namespace FluentOptionals.Tests
             Optional.From(1)
                 .Join(2)
                 .Join(3)
-                .Join(4)
                 .Join(Optional.None<int>())
                 .IfNone(() => noneHandleCalled = true);
 
@@ -133,8 +126,7 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(4)
-                .Join(5)
-                .IfSome((p1, p2, p3, p4, p5) => someHandleCalled = true);
+                .IfSome((p1, p2, p3, p4) => someHandleCalled = true);
 
             someHandleCalled.Should().BeTrue();
         }
@@ -145,7 +137,6 @@ namespace FluentOptionals.Tests
             Optional.From(1)
                 .Join(2)
                 .Join(3)
-                .Join(4)
                 .Join(Optional.None<int>())
                 .IsNone.Should().BeTrue();
         }
@@ -157,7 +148,6 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(4)
-                .Join(5)
                 .IsSome.Should().BeTrue();
         }
     }

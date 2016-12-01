@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace FluentOptionals.Tests
+namespace FluentOptionals.Tests.Compositions
 {
     [TestFixture]
-    public class Optional7Tests
+    public class Optional6Tests
     {
         [Test]
         public void Match_WhenAllOptionalsAreSome_ThenSomeHandleGetsCalled()
@@ -18,9 +18,8 @@ namespace FluentOptionals.Tests
                     .Join(4)
                     .Join(5)
                     .Join(6)
-                    .Join(7)
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6, p7) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4, p5, p6) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -39,10 +38,9 @@ namespace FluentOptionals.Tests
                     .Join(3)
                     .Join(4)
                     .Join(5)
-                    .Join(6)
                     .Join(Optional.None<string>())
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6, p7) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4, p5, p6) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -62,9 +60,8 @@ namespace FluentOptionals.Tests
                     .Join(4)
                     .Join(5)
                     .Join(6)
-                    .Join(7)
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6, p7) =>
+                        some: (p1, p2, p3, p4, p5, p6) =>
                         {
                             someHandleCalled = true;
                             p1.Should().Be(1);
@@ -73,7 +70,6 @@ namespace FluentOptionals.Tests
                             p4.Should().Be(4);
                             p5.Should().Be(5);
                             p6.Should().Be(6);
-                            p7.Should().Be(7);
                         },
                         none: () => noneHandleCalled = true
                     );
@@ -92,9 +88,8 @@ namespace FluentOptionals.Tests
                         .Join(4)
                         .Join(5)
                         .Join(6)
-                        .Join(7)
                         .Match(
-                            some: (p1, p2, p3, p4, p5, p6, p7) => "some",
+                            some: (p1, p2, p3, p4, p5, p6) => "some",
                             none: () => "none"
                         );
 
@@ -111,10 +106,9 @@ namespace FluentOptionals.Tests
                         .Join(3)
                         .Join(4)
                         .Join(5)
-                        .Join(6)
                         .Join(Optional.None<int>())
                         .Match(
-                            some: (p1, p2, p3, p4, p5, p6, p7) => "some",
+                            some: (p1, p2, p3, p4, p5, p6) => "some",
                             none: () => "none"
                         );
 
@@ -131,7 +125,6 @@ namespace FluentOptionals.Tests
                 .Join(3)
                 .Join(4)
                 .Join(5)
-                .Join(6)
                 .Join(Optional.None<int>())
                 .IfNone(() => noneHandleCalled = true);
 
@@ -149,8 +142,7 @@ namespace FluentOptionals.Tests
                 .Join(4)
                 .Join(5)
                 .Join(6)
-                .Join(7)
-                .IfSome((p1, p2, p3, p4, p5, p6, p7) => someHandleCalled = true);
+                .IfSome((p1, p2, p3, p4, p5, p6) => someHandleCalled = true);
 
             someHandleCalled.Should().BeTrue();
         }
@@ -163,7 +155,6 @@ namespace FluentOptionals.Tests
                 .Join(3)
                 .Join(4)
                 .Join(5)
-                .Join(6)
                 .Join(Optional.None<int>())
                 .IsNone.Should().BeTrue();
         }
@@ -177,7 +168,6 @@ namespace FluentOptionals.Tests
                 .Join(4)
                 .Join(5)
                 .Join(6)
-                .Join(7)
                 .IsSome.Should().BeTrue();
         }
     }

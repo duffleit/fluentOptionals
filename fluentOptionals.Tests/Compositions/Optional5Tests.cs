@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace FluentOptionals.Tests
+namespace FluentOptionals.Tests.Compositions
 {
     [TestFixture]
-    public class Optional6Tests
+    public class Optional5Tests
     {
         [Test]
         public void Match_WhenAllOptionalsAreSome_ThenSomeHandleGetsCalled()
@@ -17,9 +17,8 @@ namespace FluentOptionals.Tests
                     .Join(3)
                     .Join(4)
                     .Join(5)
-                    .Join(6)
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4, p5) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -37,10 +36,9 @@ namespace FluentOptionals.Tests
                     .Join(2)
                     .Join(3)
                     .Join(4)
-                    .Join(5)
                     .Join(Optional.None<string>())
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6) => someHandleCalled = true,
+                        some: (p1, p2, p3, p4, p5) => someHandleCalled = true,
                         none: () => noneHandleCalled = true
                     );
 
@@ -59,9 +57,8 @@ namespace FluentOptionals.Tests
                     .Join(3)
                     .Join(4)
                     .Join(5)
-                    .Join(6)
                     .Match(
-                        some: (p1, p2, p3, p4, p5, p6) =>
+                        some: (p1, p2, p3, p4, p5) =>
                         {
                             someHandleCalled = true;
                             p1.Should().Be(1);
@@ -69,7 +66,6 @@ namespace FluentOptionals.Tests
                             p3.Should().Be(3);
                             p4.Should().Be(4);
                             p5.Should().Be(5);
-                            p6.Should().Be(6);
                         },
                         none: () => noneHandleCalled = true
                     );
@@ -87,9 +83,8 @@ namespace FluentOptionals.Tests
                         .Join(3)
                         .Join(4)
                         .Join(5)
-                        .Join(6)
                         .Match(
-                            some: (p1, p2, p3, p4, p5, p6) => "some",
+                            some: (p1, p2, p3, p4, p5) => "some",
                             none: () => "none"
                         );
 
@@ -105,10 +100,9 @@ namespace FluentOptionals.Tests
                         .Join(2)
                         .Join(3)
                         .Join(4)
-                        .Join(5)
                         .Join(Optional.None<int>())
                         .Match(
-                            some: (p1, p2, p3, p4, p5, p6) => "some",
+                            some: (p1, p2, p3, p4, p5) => "some",
                             none: () => "none"
                         );
 
@@ -124,7 +118,6 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(4)
-                .Join(5)
                 .Join(Optional.None<int>())
                 .IfNone(() => noneHandleCalled = true);
 
@@ -141,8 +134,7 @@ namespace FluentOptionals.Tests
                 .Join(3)
                 .Join(4)
                 .Join(5)
-                .Join(6)
-                .IfSome((p1, p2, p3, p4, p5, p6) => someHandleCalled = true);
+                .IfSome((p1, p2, p3, p4, p5) => someHandleCalled = true);
 
             someHandleCalled.Should().BeTrue();
         }
@@ -154,7 +146,6 @@ namespace FluentOptionals.Tests
                 .Join(2)
                 .Join(3)
                 .Join(4)
-                .Join(5)
                 .Join(Optional.None<int>())
                 .IsNone.Should().BeTrue();
         }
@@ -167,7 +158,6 @@ namespace FluentOptionals.Tests
                 .Join(3)
                 .Join(4)
                 .Join(5)
-                .Join(6)
                 .IsSome.Should().BeTrue();
         }
     }
