@@ -2,7 +2,7 @@
 
 namespace FluentOptionals
 {
-    public class Optional<T1, T2> : 
+    public struct Optional<T1, T2> : 
         IOptional,
         IEquatable<Optional<T1, T2>>
     {
@@ -50,7 +50,7 @@ namespace FluentOptionals
 
         public bool Equals(Optional<T1, T2> other)
         {
-            return other != null && _o1.Equals(other._o1) && _o2.Equals(other._o2);
+            return _o1.Equals(other._o1) && _o2.Equals(other._o2);
         }
 
         #endregion

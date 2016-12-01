@@ -3,34 +3,29 @@ using System.Collections.Generic;
 
 namespace FluentOptionals
 {
-    public class Optional<T1> :
+    public struct Optional<T1> :
         IOptional,
         IComparable<Optional<T1>>,
         IComparable<T1>,
         IEquatable<Optional<T1>>,
         IEquatable<T1>
     {
-        internal Optional()
-        {
-            IsSome = false;
-        }
-
         internal Optional(T1 value)
         {
             if (value == null)
                 throw SomeCreationWithNullException.FromType<T1>();
 
-            IsSome = true;
+            _isSome = true;
             Value = value;
         }
 
         public static implicit operator Optional<T1>(T1 value) => Optional.From(value);
-
-        internal T1 Value { get; }
         
-        public bool IsSome { get; }
+        private readonly bool _isSome;
+        internal readonly T1 Value;
 
-        public bool IsNone => !IsSome;
+        public bool IsSome => _isSome;
+        public bool IsNone => !_isSome;
 
         public void Match(Action<T1> some, Action none)
         {
@@ -93,8 +88,7 @@ namespace FluentOptionals
 
         public bool Equals(Optional<T1> other)
         {
-            return other != null && (IsNone && other.IsNone ||
-                                     IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(Value, other.Value));
+            return IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T1>.Default.Equals(Value, other.Value);
         }
 
         public bool Equals(T1 other) 
