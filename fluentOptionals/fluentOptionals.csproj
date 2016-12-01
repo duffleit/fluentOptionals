@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\SomeCreationWithNullException.cs" />
-    <Compile Include="IOptional.cs" />
     <Compile Include="Optional.cs" />
     <Compile Include="Optionals\Optional7.cs" />
     <Compile Include="Optionals\Optional6.cs" />

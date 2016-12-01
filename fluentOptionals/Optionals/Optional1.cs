@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace FluentOptionals
 {
     public struct Optional<T1> :
-        IOptional,
         IComparable<Optional<T1>>,
         IComparable<T1>,
         IEquatable<Optional<T1>>,

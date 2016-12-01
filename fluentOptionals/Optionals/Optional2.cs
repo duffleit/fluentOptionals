@@ -3,7 +3,6 @@
 namespace FluentOptionals
 {
     public struct Optional<T1, T2> : 
-        IOptional,
         IEquatable<Optional<T1, T2>>
     {
         private readonly Optional<T1> _o1;
