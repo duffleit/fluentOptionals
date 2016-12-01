@@ -39,7 +39,7 @@ namespace FluentOptionals.Tests
         {
             Action nullToSome = () => ((object) null).ToSome();
 
-            nullToSome.ShouldThrow<SomeCreationWithNullException>();
+            nullToSome.ShouldThrow<SomeCreationOfNullException>();
         }
 
         #endregion

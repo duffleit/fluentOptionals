@@ -47,7 +47,7 @@ namespace FluentOptionals
         internal Optional(T value)
         {
             if (value == null)
-                throw SomeCreationWithNullException.FromType<T>();
+                throw SomeCreationOfNullException.FromType<T>();
 
             _isSome = true;
             _value = value;
