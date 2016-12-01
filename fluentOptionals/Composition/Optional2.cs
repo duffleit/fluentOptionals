@@ -14,7 +14,7 @@ namespace FluentOptionals.Composition
             _o2 = o2;
         }
 
-        public bool IsSome => _o1.IsSome && _o2.IsSome;
+        public bool IsSome => _o1.IsSome() && _o2.IsSome();
         public bool IsNone => !IsSome;
         
         public void Match(Action<T1, T2> some, Action none)

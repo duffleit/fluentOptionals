@@ -58,19 +58,16 @@ namespace FluentOptionals
         private readonly bool _isSome;
         internal readonly T Value;
 
-        public bool IsSome => _isSome;
-        public bool IsNone => !_isSome;
-
         public void Match(Action<T> some, Action none)
         {
-            if (IsSome)
+            if (_isSome)
                 some(Value);
             else
                 none();
         }
 
         public TReturn Match<TReturn>(Func<T, TReturn> some, Func<TReturn> none)
-            => IsSome ? some(Value) : none();
+            => _isSome ? some(Value) : none();
 
         public void IfSome(Action<T> handle) => Match(handle, () => { });
 
@@ -82,7 +79,7 @@ namespace FluentOptionals
 
         public T ValueOrThrow(Exception exception)
         {
-            if (IsNone) throw exception;
+            if (!_isSome) throw exception;
             return Value;
         }
 
@@ -98,24 +95,19 @@ namespace FluentOptionals
         #region Compare/Equals
 
         public int CompareTo(Optional<T> other)
-            => IsNone && other.IsNone
-                ? 0 : IsSome && other.IsSome
+            => !_isSome && !other._isSome
+                ? 0 : _isSome && other._isSome
                     ? Comparer<T>.Default.Compare(Value, other.Value)
-                    : IsSome ? -1 : 1;
-
+                    : _isSome ? -1 : 1;
 
         public int CompareTo(T other)
-            => IsNone
-                ? -1 : Comparer<T>.Default.Compare(Value, other);
+            => !_isSome ? -1 : Comparer<T>.Default.Compare(Value, other);
 
-
-        public bool Equals(Optional<T> other)
-        {
-            return IsNone && other.IsNone || IsSome && other.IsSome && EqualityComparer<T>.Default.Equals(Value, other.Value);
-        }
+        public bool Equals(Optional<T> other) 
+            => !_isSome && !other._isSome || _isSome && other._isSome && EqualityComparer<T>.Default.Equals(Value, other.Value);
 
         public bool Equals(T other)
-            => !IsNone && EqualityComparer<T>.Default.Equals(Value, other);
+            => _isSome && EqualityComparer<T>.Default.Equals(Value, other);
 
         #endregion
     }

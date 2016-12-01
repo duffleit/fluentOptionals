@@ -204,8 +204,8 @@ namespace FluentOptionals.Tests.Linq
             var optionalList = list.ToOptionalList().ToList();
 
             optionalList.Should().HaveSameCount(list);
-            optionalList.Where(o => o.IsSome).Should().HaveCount(5);
-            optionalList.Where(o => o.IsNone).Should().HaveCount(3);
+            optionalList.Where(o => o.IsSome()).Should().HaveCount(5);
+            optionalList.Where(o => !o.IsSome()).Should().HaveCount(3);
             optionalList.First().GetType().Should().Be(typeof(Optional<string>));
         }
 
@@ -216,8 +216,8 @@ namespace FluentOptionals.Tests.Linq
             var optionalList = list.ToOptionalList(i => i == "2").ToList();
 
             optionalList.Should().HaveSameCount(list);
-            optionalList.Where(o => o.IsSome).Should().HaveCount(2);
-            optionalList.Where(o => o.IsNone).Should().HaveCount(6);
+            optionalList.Where(o => o.IsSome()).Should().HaveCount(2);
+            optionalList.Where(o => !o.IsSome()).Should().HaveCount(6);
             optionalList.First().GetType().Should().Be(typeof(Optional<string>));
         }
 

@@ -41,6 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composition\CompositeHelpers.cs" />
     <Compile Include="Exceptions\SomeCreationWithNullException.cs" />
     <Compile Include="OptionalCreateExtensions.cs" />
     <Compile Include="OptionalTransformations.cs" />
