@@ -13,7 +13,7 @@ namespace FluentOptionals
         public static SomeCreationOfNullException FromType<T>()
         {
             var type = typeof (T);
-            var message = $"Optional-Some of Type '{type}' cannoat be created with null.";
+            var message = $"Optional-Some of Type '{type}' cannot be created with null.";
 
             return new SomeCreationOfNullException(message);
         } 
