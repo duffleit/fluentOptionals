@@ -3,6 +3,10 @@
 # Fluent Optionals
 ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono___
 
+ :point_up: working on a .net-standard version of fluentOptionals: _see dotNetStandard-branch_
+
+
+
 [![NuGet](https://img.shields.io/nuget/v/FluentOptionals.svg)](https://www.nuget.org/packages/FluentOptionals)  
 ``PM> Install-Package FluentOptionals``
 
