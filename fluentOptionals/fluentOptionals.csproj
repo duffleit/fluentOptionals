@@ -8,7 +8,7 @@
 <PropertyGroup>
    <TargetFramework>netstandard2.1</TargetFramework>
    <PackageId>FluentOptionals</PackageId>
-   <PackageVersion>1.0.0</PackageVersion>
+   <PackageVersion>2.0.0</PackageVersion>
    <Authors>David Leitner</Authors>
    <Description>A lightweight &amp; fluent Option/Optional/Maybe Implementation supporting .NET Standard</Description>
    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
