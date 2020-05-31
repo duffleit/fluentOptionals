@@ -1,10 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-<PropertyGroup>
-<TargetFramework>netstandard2.1</TargetFramework>
+<PropertyGroup Label="Configuration">
+   <SignAssembly>True</SignAssembly>
+   <DelaySign>False</DelaySign>
 </PropertyGroup>
+
+<PropertyGroup>
+   <TargetFramework>netstandard2.1</TargetFramework>
+   <PackageId>FluentOptionals</PackageId>
+   <PackageVersion>1.0.0</PackageVersion>
+   <Authors>David Leitner</Authors>
+   <Description>A lightweight &amp; fluent Option/Optional/Maybe Implementation supporting .NET Standard</Description>
+   <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+   <PackageReleaseNotes>$releseNote$</PackageReleaseNotes>
+   <PackageTags>optionals, maybe, option</PackageTags>
+   <ProjectUrl>https://github.com/duffleit/fluentOptionals</ProjectUrl>
+</PropertyGroup>
+
 <PropertyGroup>
    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+   <AssemblyOriginatorKeyFile>fluentOptionals.snk</AssemblyOriginatorKeyFile>
 </PropertyGroup>
 
 </Project>
