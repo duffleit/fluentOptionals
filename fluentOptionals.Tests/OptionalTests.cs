@@ -38,8 +38,7 @@ namespace FluentOptionals.Tests
         public void ToSome_WhenNullIsGiven_ThenSomeCreationFailedExceptionGetsThrown()
         {
             Action nullToSome = () => ((object) null).ToSome();
-
-            nullToSome.ShouldThrow<SomeCreationOfNullException>();
+            nullToSome.Should().Throw<SomeCreationOfNullException>();
         }
 
         #endregion
@@ -203,7 +202,7 @@ namespace FluentOptionals.Tests
         {
             Action noneThrowsException = () => _none.ValueOrThrow(new TestException());
 
-            noneThrowsException.ShouldThrow<Exception>();
+            noneThrowsException.Should().Throw<Exception>();
         }
 
         #endregion
