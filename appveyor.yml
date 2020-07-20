@@ -8,7 +8,7 @@ build:
   project: fluentOptionals.sln
   verbosity: detailed
   publish_nuget: true
-  
+
 deploy:
 - provider: NuGet
   api_key:
@@ -25,8 +25,6 @@ dotnet_csproj:
   version: '{version}'
   package_version: '{version}'
   assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
 
 environment:
     COVERALLS_REPO_TOKEN:  

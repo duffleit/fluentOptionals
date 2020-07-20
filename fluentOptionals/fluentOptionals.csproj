@@ -9,6 +9,9 @@
    <TargetFramework>netstandard2.1</TargetFramework>
    <PackageId>FluentOptionals</PackageId>
    <Authors>David Leitner</Authors>
+   <Version>0.0.0.0</Version>
+   <PackageVersion>0.0.0.0</PackageVersion>
+   <AssemblyVersion>0.0.0.0</AssemblyVersion>
    <Description>A lightweight &amp; fluent Option/Optional/Maybe Implementation supporting .NET Standard</Description>
    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
    <PackageTags>optionals, maybe, option</PackageTags>
