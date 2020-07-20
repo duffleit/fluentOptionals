@@ -3,7 +3,7 @@
 # Fluent Optionals
 ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono___
 
- :point_up: working on a .net-standard version of fluentOptionals: _see dotNetStandard-branch_
+ :point_up: Supporting .net-standard 2.1
 
 
 
@@ -173,7 +173,16 @@ _Fluent Optionals_ let you join up to seven Optionals, and beside ``Match()``, t
 
 * ``SingleOrNone()``: if exactly one __Some__-Optional exists, this is returned. I all other cases it returns a None-Optional.  
 
-# Thanks!
 
-Many thanks to [__paulroho__](https://github.com/paulroho) and [__thomaseizinger__](https://github.com/thomaseizinger) for providing inspiration and feedback.  
-And of course to Tony Hoare, if he won't have made his [one billion dollar mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare), this library would be absolutely useless. (:
+# Contributors 👨‍💻
+
+<table>
+  <tr>
+    <td align="center"><a href="https://www.leitner.io"><img src="https://avatars1.githubusercontent.com/u/7366006?v=4" width="100px;" alt="David Leitner"/><br /><sub><b>David Leitner</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/moerwald"><img src="https://avatars1.githubusercontent.com/u/17025221?v=4" width="100px;" alt="Andreas Mewald"/><br /><sub><b>Andreas Mewald</b></sub></a><br /></td>
+    <td align="center"><a href="https://www.eizinger.io"><img src="https://avatars1.githubusercontent.com/u/5486389?v=4" width="100px;" alt="Thomas Eizinger"/><br /><sub><b>Thomas Eizinger</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/paulroho"><img src="https://avatars1.githubusercontent.com/u/721933?v=4" width="100px;" alt="Paul Rohorzka"/><br /><sub><b>Paul Rohorzka</b></sub></a><br /></td>
+    </tr>
+</table>
+
+Many thanks to all the others for providing inspiration and feedback. And of course to Tony Hoare, if he won't have made his [one billion dollar mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare), this library would be absolutely useless. (:
