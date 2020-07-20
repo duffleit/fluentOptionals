@@ -8,7 +8,7 @@
 <PropertyGroup>
    <TargetFramework>netstandard2.1</TargetFramework>
    <PackageId>FluentOptionals</PackageId>
-   <Authors>David Leitner</Authors>
+   <Authors>duffleit</Authors>
    <Version>0.0.0.0</Version>
    <PackageVersion>0.0.0.0</PackageVersion>
    <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -16,6 +16,7 @@
    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
    <PackageTags>optionals, maybe, option</PackageTags>
    <ProjectUrl>https://github.com/duffleit/fluentOptionals</ProjectUrl>
+   <RepositoryUrl>https://github.com/duffleit/fluentOptionals</RepositoryUrl>
 </PropertyGroup>
 
 <PropertyGroup>
