@@ -1,7 +1,8 @@
 version: 2.0.0.{build}
+image: Visual Studio 2019
 
-install:
-    - nuget restore
+before_build:
+  - nuget restore
 
 build:
   project: fluentOptionals.sln
@@ -11,14 +12,15 @@ build:
 assembly_info:
   patch: true
   file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  package_version: '{version}'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
 
 deploy:
-  provider: NuGet
+- provider: NuGet
   api_key:
-    secure: cN/5QbdaICN1YRrkT4atFVJh9herFrwY7zE6XXWCASecAzW5QnMegvq7p4eDRh5f
+    secure: AicefzCFXMlkGbgo0JXEdYmvkzams1YN4F+u5tnawcj7a8xSyqQySqdv1YisJIvo
   skip_symbols: false
   artifact: /.*\.nupkg/
   on:

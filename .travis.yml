@@ -1,5 +1,0 @@
-language: csharp
-solution: fluentOptionals.sln
-
-notifications:
-  email: false
