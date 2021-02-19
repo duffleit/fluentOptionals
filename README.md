@@ -3,7 +3,7 @@
 # Fluent Optionals
 ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono___
 
- :point_up: Supporting .net-standard 2.1
+ :point_up: Supporting .net-standard 2.0 and 2.1
 
 
 
