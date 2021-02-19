@@ -1,4 +1,4 @@
-version: 2.2.0.{build}
+version: 2.3.0.{build}
 image: Visual Studio 2019
 
 before_build:
@@ -16,7 +16,6 @@ deploy:
   skip_symbols: false
   artifact: /.*\.nupkg/
   on:
-    branch: master
     appveyor_repo_tag: true
 
 dotnet_csproj:
