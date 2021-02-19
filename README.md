@@ -11,7 +11,6 @@ ___a lightweight & fluent Option/Optional/Maybe Implementation for .Net & Mono__
 ``PM> Install-Package FluentOptionals``
 
 [![Build status](https://ci.appveyor.com/api/projects/status/bn58b7k9xeh9073a?svg=true)](https://ci.appveyor.com/project/duffleit/fluentoptionals)
-[![Build Status](https://travis-ci.org/duffleit/fluentOptionals.svg)](https://travis-ci.org/duffleit/fluentOptionals)
 [![Coverage Status](https://coveralls.io/repos/github/duffleit/fluentOptionals/badge.svg?branch=master)](https://coveralls.io/github/duffleit/fluentOptionals?branch=master)
 
 Usually this is the place to go into detail about Optionals and why you should use them. I won't do this as it is already done better than I ever could: 
